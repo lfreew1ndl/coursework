@@ -9,12 +9,13 @@ import javax.persistence.*;
 @EntityListeners(AuditingEntityListener.class)
 public class Payphones {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 
 
-    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "phonenumber_id")
     private Phonenumber phonenumber;
 

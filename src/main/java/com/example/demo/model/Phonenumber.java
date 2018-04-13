@@ -21,7 +21,7 @@ public class Phonenumber {
 
     @JsonIgnore
     @OneToOne(mappedBy = "phonenumber", cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER, optional = false)
+            fetch = FetchType.EAGER)
     private Consumer consumer;
 
     @Column(name = "housenumber")
