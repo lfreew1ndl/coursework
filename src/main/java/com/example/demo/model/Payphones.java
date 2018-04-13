@@ -13,8 +13,9 @@ public class Payphones {
     @Column(name = "id")
     private long id;
 
+
     @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "PhoneNumber_id")
+    @JoinColumn(name = "phonenumber_id")
     private Phonenumber phonenumber;
 
     public Payphones() {

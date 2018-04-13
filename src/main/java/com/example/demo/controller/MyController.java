@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequestMapping("/get")
 public class MyController {
     @Autowired
     RegionRepository regionRepository;
@@ -40,13 +41,6 @@ public class MyController {
 
     @Autowired
     QueueRepository queueRepository;
-
-
-
-    @RequestMapping("/api")
-    public String getString(){
-        return "pidor";
-    }
 
     @RequestMapping("/streets")
     public List<Street> getStreets(){

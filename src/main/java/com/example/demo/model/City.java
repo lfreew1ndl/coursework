@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -19,9 +20,12 @@ public class City {
     @Column(name = "name")
     private String name;
 
+
+    @JsonIgnore
     @OneToMany(mappedBy = "cityWhoCall",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Calls> whoCallList;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cityToWhomCall",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Calls> toWhomCallList;
 

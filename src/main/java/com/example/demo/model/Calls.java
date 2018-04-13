@@ -4,6 +4,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "calls")
@@ -15,21 +16,21 @@ public class Calls {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "whoCallNumber")
+    @Column(name = "whocallnumber")
     private long whoCallNumber;
 
-    @Column(name = "toWhomCallNumber")
+    @Column(name = "towhomcallnumber")
     private long toWhomCallNumber;
 
     @Column(name = "data")
-    private java.sql.Date data;
+    private LocalDate data;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "cityCodeWhoCall")
+    @JoinColumn(name = "citycodewhocall")
     private City cityWhoCall;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "cityCodeToWhomCall")
+    @JoinColumn(name = "citycodetowhomcall")
     private City cityToWhomCall;
 
     public long getId() {
@@ -56,11 +57,11 @@ public class Calls {
         this.toWhomCallNumber = toWhomCallNumber;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
@@ -84,10 +85,10 @@ public class Calls {
 
     }
 
-    public Calls(long whoCallNumber, long toWhomCallNumber, Date data, City cityWhoCall, City cityToWhomCall) {
+    public Calls(long whoCallNumber, long toWhomCallNumber, LocalDate data, City cityWhoCall, City cityToWhomCall) {
         this.whoCallNumber = whoCallNumber;
         this.toWhomCallNumber = toWhomCallNumber;
-        this.data = data;
+//        this.data = data;
         this.cityWhoCall = cityWhoCall;
 
         this.cityToWhomCall = cityToWhomCall;
