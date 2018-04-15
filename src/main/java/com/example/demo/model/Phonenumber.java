@@ -31,7 +31,7 @@ public class Phonenumber {
     private Long apartment;
 
     @Column(name = "interspace")
-    private long interspace;
+    private boolean interspace;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "Street_id")
@@ -44,7 +44,7 @@ public class Phonenumber {
     public Phonenumber() {
     }
 
-    public Phonenumber(Number number, Consumer consumer, String houseNumber, Long apartment, long interspace, Street street, PhoneType phoneType) {
+    public Phonenumber(Number number, Consumer consumer, String houseNumber, Long apartment, boolean interspace, Street street, PhoneType phoneType) {
         this.number = number;
         this.consumer = consumer;
         this.houseNumber = houseNumber;
@@ -94,11 +94,11 @@ public class Phonenumber {
         this.apartment = apartment;
     }
 
-    public long getInterspace() {
+    public boolean getInterspace() {
         return interspace;
     }
 
-    public void setInterspace(long interspace) {
+    public void setInterspace(boolean interspace) {
         this.interspace = interspace;
     }
 

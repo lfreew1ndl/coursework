@@ -60,3 +60,11 @@ function off3(id) {
 	but.classList.remove("button6");
 	but.classList.add("blocked2");
 }
+
+function format(bollean) {
+	if (bollean){
+		return "Так"
+	}else {
+		return "Ні"
+	}
+}

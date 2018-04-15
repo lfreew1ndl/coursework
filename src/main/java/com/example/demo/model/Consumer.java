@@ -30,14 +30,14 @@ public class Consumer {
     private long balance;
 
     @Column(name = "beneficiary")
-    private long beneficiary;
+    private boolean beneficiary;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "phonenumber_id")
     private Phonenumber phonenumber;
 
     @Column(name = "connected")
-    private long connected;
+    private boolean connected;
 
     public Phonenumber getPhonenumber() {
         return phonenumber;
@@ -50,7 +50,7 @@ public class Consumer {
     public Consumer() {
     }
 
-    public Consumer(String firstName, String lastName, String sex, long age, long balance, long beneficiary, Phonenumber phonenumber, long connected) {
+    public Consumer(String firstName, String lastName, String sex, long age, long balance, boolean beneficiary, Phonenumber phonenumber, boolean connected) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
@@ -115,20 +115,20 @@ public class Consumer {
     }
 
 
-    public long getBeneficiary() {
+    public boolean getBeneficiary() {
         return beneficiary;
     }
 
-    public void setBeneficiary(long beneficiary) {
+    public void setBeneficiary(boolean beneficiary) {
         this.beneficiary = beneficiary;
     }
 
 
-    public long getConnected() {
+    public boolean getConnected() {
         return connected;
     }
 
-    public void setConnected(long connected) {
+    public void setConnected(boolean connected) {
         this.connected = connected;
     }
 

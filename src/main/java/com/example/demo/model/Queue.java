@@ -37,9 +37,9 @@ public class Queue {
     private String apartment;
 
     @Column(name = "beneficiary")
-    private long beneficiary;
+    private boolean beneficiary;
 
-    public Queue(String firstName, String lastName, String sex, long age, Street street, String houseNumber, String apartment, long beneficiary) {
+    public Queue(String firstName, String lastName, String sex, long age, Street street, String houseNumber, String apartment, boolean beneficiary) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
@@ -117,11 +117,11 @@ public class Queue {
         this.apartment = apartment;
     }
 
-    public long getBeneficiary() {
+    public boolean getBeneficiary() {
         return beneficiary;
     }
 
-    public void setBeneficiary(long beneficiary) {
+    public void setBeneficiary(boolean beneficiary) {
         this.beneficiary = beneficiary;
     }
 }

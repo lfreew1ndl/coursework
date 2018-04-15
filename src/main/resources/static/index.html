@@ -10,7 +10,7 @@
 <body ng-app="App">
 <div class="container-fluid" style="text-align: center;">
     <div class="row" style="text-align: center;">
-        <button class="col-sm-6 button8" id="b1" onclick="off('b1','Information','DataBase')">Отримати інформація
+        <button class="col-sm-6 button8" id="b1" onclick="off('b1','Information','DataBase')">Отримати інформацію
         </button>
         <button class="col-sm-6 button8" id="b2" onclick="off('b2','DataBase','Information')">Редактувати базу данних
         </button>
@@ -23,15 +23,15 @@
     <div class="container-fluid">
         <div class="row" style="text-align: center;">
             <button class="col-sm-2 button6" id="t1" onclick="off2('t1')">АТС</button>
-            <button class="col-sm-2 button6" id="t3" onclick="off2('t3')">Number</button>
-            <button class="col-sm-2 button6" id="t4" onclick="off2('t4')">PhoneNumber</button>
-            <button class="col-sm-2 button6" id="t5" onclick="off2('t5')">Consumer</button>
-            <button class="col-sm-2 button6" id="t7" onclick="off2('t7')">PayPhone</button>
-            <button class="col-sm-2 button6" id="t8" onclick="off2('t8')">Queue</button>
-            <button class="col-sm-2 button6" id="t9" onclick="off2('t9')">Street</button>
-            <button class="col-sm-2 button6" id="t10" onclick="off2('t10')">Region</button>
-            <button class="col-sm-2 button6" id="t11" onclick="off2('t11')">Call</button>
-            <button class="col-sm-2 button6" id="t12" onclick="off2('t12')">City</button>
+            <button class="col-sm-2 button6" id="t3" onclick="off2('t3')">Номера</button>
+            <button class="col-sm-2 button6" id="t4" onclick="off2('t4')">Телефоні номера</button>
+            <button class="col-sm-2 button6" id="t5" onclick="off2('t5')">Користувачі</button>
+            <button class="col-sm-2 button6" id="t7" onclick="off2('t7')">Таксофони</button>
+            <button class="col-sm-2 button6" id="t8" onclick="off2('t8')">Черга</button>
+            <button class="col-sm-2 button6" id="t9" onclick="off2('t9')">Вулиці</button>
+            <button class="col-sm-2 button6" id="t10" onclick="off2('t10')">Регіони</button>
+            <button class="col-sm-2 button6" id="t11" onclick="off2('t11')">Звінки</button>
+            <button class="col-sm-2 button6" id="t12" onclick="off2('t12')">Міста</button>
         </div>
         <br>
 
@@ -40,16 +40,16 @@
                 <table class="table table-sm table-dark">
                     <thead>
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">ATCType</th>
-                        <th scope="col">name</th>
+                        <th>ідентифікатор</th>
+                        <th>тип АТС</th>
+                        <th>назва</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="item in mtces">
-                        <th>{{item.id}}</th>
-                        <td>{{item.atcType}}</td>
-                        <td>{{item.name}}</td>
+                        <th scope="row">{{item.id}}</th>
+                        <td scope="row">{{item.atcType}}</td>
+                        <td scope="row">{{item.name}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -61,14 +61,14 @@
                 <table class="table table-sm table-dark">
                     <thead>
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">Number</th>
+                        <th>ідентифікатор</th>
+                        <th>номер телефона</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="item in numbers">
-                        <th>{{item.id}}</th>
-                        <th>{{item.number}}</th>
+                        <th scope="row">{{item.id}}</th>
+                        <th scope="row">{{item.number}}</th>
                     </tr>
                     </tbody>
                 </table>
@@ -80,24 +80,24 @@
                 <table class="table table-sm table-dark">
                     <thead>
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">number</th>
-                        <th scope="col">houseNumber</th>
-                        <th scope="col">apartment</th>
-                        <th scope="col">interspace</th>
-                        <th scope="col">PhoneType</th>
-                        <th scope="col">Street</th>
+                        <th>ідентифікатор</th>
+                        <th>номер телефона</th>
+                        <th>номер будинку</th>
+                        <th>квартира</th>
+                        <th>міжмісто</th>
+                        <th>тип телефону</th>
+                        <th>вулиця</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="item in phonenumbers">
-                        <th>{{item.id}}</th>
-                        <td>{{item.number.number}}</td>
-                        <td>{{item.houseNumber}}</td>
-                        <td>{{item.apartment}}</td>
-                        <td>{{item.interspace}}</td>
-                        <td>{{item.phoneType}}</td>
-                        <td>{{item.street.name}}</td>
+                        <th scope="row">{{item.id}}</th>
+                        <td scope="row">{{item.number.number}}</td>
+                        <td scope="row">{{item.houseNumber}}</td>
+                        <td scope="row">{{item.apartment}}</td>
+                        <td scope="row">{{item.interspace?'Так':'Ні'}}</td>
+                        <td scope="row">{{item.phoneType}}</td>
+                        <td scope="row">{{item.street.name}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -107,31 +107,31 @@
 
         <div style="display: none;" id="comp5">
             <div>
-                <table class="table table-sm table-dark">
+                <table class="table table-sm table-dark" >
                     <thead>
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">firstName</th>
-                        <th scope="col">lastName</th>
-                        <th scope="col">sex</th>
-                        <th scope="col">age</th>
-                        <th scope="col">balance</th>
-                        <th scope="col">beneficiary</th>
-                        <th scope="col">PhoneNumber</th>
-                        <th scope="col">connected</th>
+                        <th>ідентифікатор</th>
+                        <th>ім'я</th>
+                        <th>фімілія</th>
+                        <th>стать</th>
+                        <th>вік</th>
+                        <th>баланс</th>
+                        <th>пільговик</th>
+                        <th>номер телефона</th>
+                        <th>підключений</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="item in consumers">
-                            <th>{{item.id}}</th>
-                            <td>{{item.firstName}}</td>
-                            <td>{{item.lastName}}</td>
-                            <td>{{item.sex}}</td>
-                            <td>{{item.age}}</td>
-                            <td>{{item.balance}}</td>
-                            <td>{{item.beneficiary}}</td>
-                            <td>{{item.phonenumber.number.number}}</td>
-                            <td>{{item.connected}}</td>
+                            <th scope="row">{{item.id}}</th>
+                            <td scope="row">{{item.firstName}}</td>
+                            <td scope="row">{{item.lastName}}</td>
+                            <td scope="row">{{item.sex}}</td>
+                            <td scope="row">{{item.age}}</td>
+                            <td scope="row">{{item.balance}}</td>
+                            <td scope="row">{{item.beneficiary?'Так':'Ні'}}</td>
+                            <td scope="row">{{item.phonenumber.number.number}}</td>
+                            <td scope="row">{{item.connected?'Так':'Ні'}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -144,14 +144,14 @@
                 <table class="table table-sm table-dark">
                     <thead>
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">PhoneNumber</th>
+                        <th>ідентифікатор</th>
+                        <th>номер телефона</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="item in payphones">
                             <th scope="row">{{item.id}}</th>
-                            <td>{{item.phonenumber.number.number}}</td>
+                            <td scope="row">{{item.phonenumber.number.number}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -163,28 +163,28 @@
                 <table class="table table-sm table-dark">
                     <thead>
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">firstName</th>
-                        <th scope="col">lastName</th>
-                        <th scope="col">sex</th>
-                        <th scope="col">age</th>
-                        <th scope="col">Street</th>
-                        <th scope="col">houseNumber</th>
-                        <th scope="col">apartment</th>
-                        <th scope="col">beneficiary</th>
+                        <th>ідентифікатор</th>
+                        <th>ім'я</th>
+                        <th>фамілія</th>
+                        <th>стать</th>
+                        <th>вік</th>
+                        <th>вулиця</th>
+                        <th>номер будинку</th>
+                        <th>квартира</th>
+                        <th>пільговик</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="item in queues">
-                            <th>{{item.id}}</th>
-                            <td>{{item.firstName}}</td>
-                            <td>{{item.lastName}}</td>
-                            <td>{{item.sex}}</td>
-                            <td>{{item.age}}</td>
-                            <td>{{item.street.name}}</td>
-                            <td>{{item.houseNumber}}</td>
-                            <td>{{item.apartment}}</td>
-                            <td>{{item.beneficiary}}</td>
+                            <th scope="row">{{item.id}}</th>
+                            <td scope="row">{{item.firstName}}</td>
+                            <td scope="row">{{item.lastName}}</td>
+                            <td scope="row">{{item.sex}}</td>
+                            <td scope="row">{{item.age}}</td>
+                            <td scope="row">{{item.street.name}}</td>
+                            <td scope="row">{{item.houseNumber}}</td>
+                            <td scope="row">{{item.apartment}}</td>
+                            <td scope="row">{{item.beneficiary?'Так':'Ні'}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -196,22 +196,22 @@
                 <table class="table table-sm table-dark">
                     <thead>
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">name</th>
-                        <th scope="col">Region_id</th>
-                        <th scope="col">index</th>
-                        <th scope="col">channels</th>
-                        <th scope="col">MTC</th>
+                        <th>ідентифікатор</th>
+                        <th>назва</th>
+                        <th>регіон</th>
+                        <th>індекс</th>
+                        <th>кількість каналів</th>
+                        <th>атс</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="item in streets">
-                            <th>{{item.id}}</th>
-                            <td>{{item.name}}</td>
-                            <td>{{item.region.name}}</td>
-                            <td>{{item.index}}</td>
-                            <td>{{item.channels}}</td>
-                            <td>{{item.mtc.name}}</td>
+                            <th scope="row">{{item.id}}</th>
+                            <td scope="row">{{item.name}}</td>
+                            <td scope="row">{{item.region.name}}</td>
+                            <td scope="row">{{item.index}}</td>
+                            <td scope="row">{{item.channels}}</td>
+                            <td scope="row">{{item.mtc.name}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -223,14 +223,14 @@
                 <table class="table table-sm table-dark">
                     <thead>
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">name</th>
+                        <th>ідентифікатор</th>
+                        <th>назва</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="item in regions">
-                            <th>{{item.id}}</th>
-                            <td>{{item.name}}</td>
+                            <th scope="row">{{item.id}}</th>
+                            <td scope="row">{{item.name}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -242,22 +242,22 @@
                 <table class="table table-sm table-dark">
                     <thead>
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">whoCallNumber</th>
-                        <th scope="col">toWhomCallNumber</th>
-                        <th scope="col">toWhomCallCity</th>
-                        <th scope="col">toWhomCallCity</th>
-                        <th scope="col">data</th>
+                        <th>ідентифікатор</th>
+                        <th>номер звідки звонили</th>
+                        <th>номер куда звонили</th>
+                        <th>місто звідки звонили</th>
+                        <th>місто куда звонили</th>
+                        <th>дата</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="item in calls">
-                            <th>{{item.id}}</th>
-                            <td>{{item.whoCallNumber}}</td>
-                            <td>{{item.toWhomCallNumber}}</td>
-                            <td>{{item.cityWhoCall.name}}</td>
-                            <td>{{item.cityToWhomCall.name}}</td>
-                            <td>{{item.data}}</td>
+                            <th scope="row">{{item.id}}</th>
+                            <td scope="row">{{item.whoCallNumber}}</td>
+                            <td scope="row">{{item.toWhomCallNumber}}</td>
+                            <td scope="row">{{item.cityWhoCall.name}}</td>
+                            <td scope="row">{{item.cityToWhomCall.name}}</td>
+                            <td scope="row">{{item.data}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -269,15 +269,15 @@
                 <table class="table table-sm table-dark">
                     <thead>
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">name</th>
+                        <th>ідентифікатор</th>
+                        <th>назва</th>
 
                     </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="item in cities">
-                            <th>{{item.id}}</th>
-                            <td>{{item.name}}</td>
+                            <th scope="row">{{item.id}}</th>
+                            <td scope="row">{{item.name}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -316,9 +316,9 @@
             <table class="table table-sm table-dark">
                 <thead>
                 <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">FirstName</th>
-                    <th scope="col">SecondName</th>
+                    <th>Id</th>
+                    <th>FirstName</th>
+                    <th>SecondName</th>
                 </tr>
                 </thead>
                 <tbody>
