@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>MTC</title>
+    <title>City</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -13,15 +13,14 @@
 </head>
 
 <body ng-app="App">
-MTC
-<div ng-controller="MTC as ctrl" id="block">
+City
+<div ng-controller="City as ctrl" id="block">
     <div class="container-fluid">
         <div class="datagrid">
             <table>
                 <thead>
                 <tr>
-                    <th width="40px">Ідентифікатор</th>
-                    <th>Тип АТС</th>
+                    <th width="40px">Код міста</th>
                     <th>Назва</th>
                     <th width="65px">
                         <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
@@ -32,17 +31,16 @@ MTC
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="item in mtces">
+                <tr ng-repeat="item in cities">
                     <td scope="row">{{item.id}}</td>
-                    <td scope="row">{{item.atcType}}</td>
                     <td scope="row">{{item.name}}</td>
                     <td scope="row">
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
-                                ng-click="ctrl.startUpdateMTC(item.id,item.atcType,item.name)"
+                                ng-click="ctrl.startUpdateCity(item.id,item.name)"
                                 style="width: 30px">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
-                        <button type="button" class="btn-danger" ng-click="ctrl.delFromMTC(item.id)"
+                        <button type="button" class="btn-danger" ng-click="ctrl.delFromCity(item.id)"
                                 style="width: 30px">
                             <i class="far fa-trash-alt"></i>
                         </button>
@@ -52,7 +50,7 @@ MTC
             </table>
         </div>
 
-        <!--добавление MTC-->
+        <!--добавление City-->
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -63,29 +61,25 @@ MTC
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
+
                     <div class="modal-body">
-                        Введіть назву АТС
+                        Введіть код міста
+                        <input type="text" id="CityId">
+                        <br><br>
+                        Введіть назву міста
                         <br>
-                        <input type="text" id="ATCname">
+                        <input type="text" id="CityName">
                         <br>
-                        <br>
-                        Виберіть тип АТС
-                        <br>
-                        <select id="ATCType">
-                            <option>Міський</option>
-                            <option>Відомчий</option>
-                            <option>Установчий</option>
-                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
-                        <button type="button" class="btn btn-primary" ng-click="ctrl.insertToMTC()">Добавити</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.insertToCity()">Добавити</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!--обновленіє MTC-->
+        <!--обновленіє City-->
         <div class="modal fade" id="updateModal" tabindex="-2" role="dialog" aria-labelledby="updateModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -96,26 +90,20 @@ MTC
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
+
+
                     <div class="modal-body">
-                        Ідентифікатор
-                        <br>
-                        <div id="ATCidUPD"></div>
+                        Код міста
+                        <input type="text" id="CityIdUPD" readonly="readonly">
+                        <br><br>
                         Введіть назву АТС
+
+                        <input type="text" id="CityNameUPD">
                         <br>
-                        <input type="text" id="ATCnameUPD">
-                        <br>
-                        <br>
-                        Виберіть тип АТС
-                        <br>
-                        <select id="ATCTypeUPD">
-                            <option>Міський</option>
-                            <option>Відомчий</option>
-                            <option>Установчий</option>
-                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
-                        <button type="button" class="btn btn-primary" ng-click="ctrl.updateMTC()">Обновити</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.updateCity()">Обновити</button>
                     </div>
                 </div>
             </div>
@@ -131,6 +119,6 @@ MTC
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/MTC.js"></script>
+<script type="text/javascript" src="js/City.js"></script>
 
 </html>

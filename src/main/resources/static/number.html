@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>MTC</title>
+    <title>Number</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -13,15 +13,14 @@
 </head>
 
 <body ng-app="App">
-MTC
-<div ng-controller="MTC as ctrl" id="block">
+Number
+<div ng-controller="Number as ctrl" id="block">
     <div class="container-fluid">
         <div class="datagrid">
             <table>
                 <thead>
                 <tr>
                     <th width="40px">Ідентифікатор</th>
-                    <th>Тип АТС</th>
                     <th>Назва</th>
                     <th width="65px">
                         <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
@@ -32,17 +31,16 @@ MTC
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="item in mtces">
+                <tr ng-repeat="item in numbers">
                     <td scope="row">{{item.id}}</td>
-                    <td scope="row">{{item.atcType}}</td>
-                    <td scope="row">{{item.name}}</td>
+                    <td scope="row">{{item.number}}</td>
                     <td scope="row">
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
-                                ng-click="ctrl.startUpdateMTC(item.id,item.atcType,item.name)"
+                                ng-click="ctrl.startUpdateNumber(item.id,item.number)"
                                 style="width: 30px">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
-                        <button type="button" class="btn-danger" ng-click="ctrl.delFromMTC(item.id)"
+                        <button type="button" class="btn-danger" ng-click="ctrl.delFromNumber(item.id)"
                                 style="width: 30px">
                             <i class="far fa-trash-alt"></i>
                         </button>
@@ -52,7 +50,7 @@ MTC
             </table>
         </div>
 
-        <!--добавление MTC-->
+        <!--добавление Number-->
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -64,28 +62,20 @@ MTC
                         </button>
                     </div>
                     <div class="modal-body">
-                        Введіть назву АТС
+                        Введіть номер
                         <br>
-                        <input type="text" id="ATCname">
+                        <input type="text" id="Number">
                         <br>
-                        <br>
-                        Виберіть тип АТС
-                        <br>
-                        <select id="ATCType">
-                            <option>Міський</option>
-                            <option>Відомчий</option>
-                            <option>Установчий</option>
-                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
-                        <button type="button" class="btn btn-primary" ng-click="ctrl.insertToMTC()">Добавити</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.insertToNumber()">Добавити</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!--обновленіє MTC-->
+        <!--обновленіє Number-->
         <div class="modal fade" id="updateModal" tabindex="-2" role="dialog" aria-labelledby="updateModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -99,23 +89,15 @@ MTC
                     <div class="modal-body">
                         Ідентифікатор
                         <br>
-                        <div id="ATCidUPD"></div>
-                        Введіть назву АТС
+                        <div id="NumberIdUPD"></div>
+                        Введіть номер
                         <br>
-                        <input type="text" id="ATCnameUPD">
+                        <input type="text" id="NumberUPD">
                         <br>
-                        <br>
-                        Виберіть тип АТС
-                        <br>
-                        <select id="ATCTypeUPD">
-                            <option>Міський</option>
-                            <option>Відомчий</option>
-                            <option>Установчий</option>
-                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
-                        <button type="button" class="btn btn-primary" ng-click="ctrl.updateMTC()">Обновити</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.updateNumber()">Обновити</button>
                     </div>
                 </div>
             </div>
@@ -125,12 +107,13 @@ MTC
 <br>
 </body>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/MTC.js"></script>
+<script type="text/javascript" src="js/number.js"></script>
 
 </html>

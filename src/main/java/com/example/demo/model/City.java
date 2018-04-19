@@ -13,7 +13,7 @@ import java.util.List;
 @EntityListeners(AuditingEntityListener.class)
 public class City {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     @Column(name = "id")
     private long id;
 
@@ -29,7 +29,8 @@ public class City {
     @OneToMany(mappedBy = "cityToWhomCall",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Calls> toWhomCallList;
 
-    public City(String name, List<Calls> whoCallList, List<Calls> toWhomCallList) {
+    public City(long id, String name, List<Calls> whoCallList, List<Calls> toWhomCallList) {
+        this.id = id;
         this.name = name;
         this.whoCallList = whoCallList;
         this.toWhomCallList = toWhomCallList;

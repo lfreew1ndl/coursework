@@ -22,12 +22,19 @@ public class MTCController {
     }
 
     @PostMapping("/insert")
-    public Mtc insertOneChair(@RequestBody Mtc mtc) {
+    public Mtc insertMTC(@RequestBody Mtc mtc) {
+        System.out.println(mtc.getId());
+        return mtcRepository.save(mtc);
+    }
+
+    @RequestMapping("/update")
+    public Mtc updateMTC(@RequestBody Mtc mtc,@RequestParam("id") long id) {
+        mtc.setId(id);
         return mtcRepository.save(mtc);
     }
 
     @RequestMapping("/del")
-    public void delOneChair(@RequestParam("id") int id){
+    public void delMTC(@RequestParam("id") int id){
         mtcRepository.deleteById((long)id);
     }
 
