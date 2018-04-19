@@ -20,7 +20,7 @@
     </div>
     <br>
     <br>
-    <div id="DataBase" style="display: none;" ng-controller="Ctrl as ctrl">
+    <div id="DataBase" ng-controller="Ctrl">
         <div class="container-fluid">
             <div class="row" style="text-align: center;">
                 <button class="col-sm-2 button6" id="t1" onclick="off2('t1')">АТС</button>
@@ -37,7 +37,7 @@
             <br>
             <div style="display: none;" id="comp1">
                 <div>
-                    <table class="table table-sm table-dark" id = "table1">
+                    <table class="table table-sm table-dark">
                         <thead>
                             <tr>
                                 <th>ідентифікатор</th>
@@ -55,11 +55,6 @@
                                 <th scope="row">{{item.id}}</th>
                                 <td scope="row">{{item.atcType}}</td>
                                 <td scope="row">{{item.name}}</td>
-                                <td scope="row">
-                                    <button type="button" class="btn-danger" ng-click="ctrl.delFromMTC(item.id,this)" style="width: 40px">
-                                        X
-                                    </button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -77,19 +72,19 @@
                         </div>
                         <div class="modal-body">
                             Введіть назву АТС
-                            <input type="text" name="ATCName" id="ATCName">
+                            <input type="text" name="nameATC">
                             <br><br>
 
                             Виберіть тип АТС
-                            <select name="ATCType" id="ATCType">
-                                <option value="Міський">Міський</option>
-                                <option value="Відомчий">Відомчий</option>
-                                <option value="Установчий">Установчий</option>
+                            <select>
+                                <option>Міський</option>
+                                <option>Відомчий</option>
+                                <option>Установчий</option>
                             </select>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
-                            <button type="button" ng-click="ctrl.insertToMTC()" class="btn btn-primary">Добавити</button>
+                            <button type="button" class="btn btn-primary" onclick="">Добавити</button>
                         </div>
                     </div>
                 </div>
@@ -141,36 +136,36 @@
                 </div>
             </div>
             <div style="display: none;" id="comp5">
-                <div>
-                    <table class="table table-sm table-dark">
-                        <thead>
-                            <tr>
-                                <th>ідентифікатор</th>
-                                <th>ім'я</th>
-                                <th>фімілія</th>
-                                <th>стать</th>
-                                <th>вік</th>
-                                <th>баланс</th>
-                                <th>пільговик</th>
-                                <th>номер телефона</th>
-                                <th>підключений</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="item in consumers">
-                                <th scope="row">{{item.id}}</th>
-                                <td scope="row">{{item.firstName}}</td>
-                                <td scope="row">{{item.lastName}}</td>
-                                <td scope="row">{{item.sex}}</td>
-                                <td scope="row">{{item.age}}</td>
-                                <td scope="row">{{item.balance}}</td>
-                                <td scope="row">{{item.beneficiary?'Так':'Ні'}}</td>
-                                <td scope="row">{{item.phonenumber.number.number}}</td>
-                                <td scope="row">{{item.connected?'Так':'Ні'}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <div>
+                        <table class="table table-sm table-dark">
+                            <thead>
+                                <tr>
+                                    <th>ідентифікатор</th>
+                                    <th>ім'я</th>
+                                    <th>фімілія</th>
+                                    <th>стать</th>
+                                    <th>вік</th>
+                                    <th>баланс</th>
+                                    <th>пільговик</th>
+                                    <th>номер телефона</th>
+                                    <th>підключений</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in consumers">
+                                    <th scope="row">{{item.id}}</th>
+                                    <td scope="row">{{item.firstName}}</td>
+                                    <td scope="row">{{item.lastName}}</td>
+                                    <td scope="row">{{item.sex}}</td>
+                                    <td scope="row">{{item.age}}</td>
+                                    <td scope="row">{{item.balance}}</td>
+                                    <td scope="row">{{item.beneficiary?'Так':'Ні'}}</td>
+                                    <td scope="row">{{item.phonenumber.number.number}}</td>
+                                    <td scope="row">{{item.connected?'Так':'Ні'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
             </div>
             <div style="display: none;" id="comp7">
                 <div>

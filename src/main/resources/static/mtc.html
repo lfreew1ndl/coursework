@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MTC</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+</head>
+
+<body ng-app="App">
+MTC
+<div ng-controller="Ctrl as ctrl" id="block">
+    <div class="container-fluid">
+        <div class="datagrid">
+            <table>
+                <thead>
+                <tr>
+                    <th width="40px">ідентифікатор</th>
+                    <th>тип АТС</th>
+                    <th>назва</th>
+                    <th width="65px">
+                        <button type="button" class="btn-success" data-toggle="modal" data-target="#myModal"
+                                style="width: 63px">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in mtces">
+                    <td scope="row">{{item.id}}</td>
+                    <td scope="row">{{item.atcType}}</td>
+                    <td scope="row">{{item.name}}</td>
+                    <td scope="row">
+                        <button type="button" class="btn-warning" ng-click="ctrl.updateMTC(item.id)"
+                                style="width: 30px">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button type="button" class="btn-danger" ng-click="ctrl.delFromMTC(item.id)"
+                                style="width: 30px">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--добавление MTC-->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">Добавлення</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Введіть назву АТС
+                        <br>
+                        <input type="text" id="nameATC">
+                        <br>
+                        <br>
+                        Виберіть тип АТС
+                        <br>
+                        <select id="ATCType">
+                            <option>Міський</option>
+                            <option>Відомчий</option>
+                            <option>Установчий</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.insertToMTC()">Добавити</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+</html>
