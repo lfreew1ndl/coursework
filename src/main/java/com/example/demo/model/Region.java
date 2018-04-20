@@ -18,6 +18,8 @@ public class Region {
     @Column(name = "name")
     private String name;
 
+
+
     @JsonIgnore
     @OneToMany(mappedBy="region", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Street> streets;

@@ -4,8 +4,7 @@ import com.example.demo.model.*;
 import com.example.demo.model.Number;
 import com.example.demo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,9 +14,30 @@ public class StreetController {
 
     @Autowired
     StreetRepository streetRepository;
+    @Autowired
+    RegionRepository regionRepository;
+    @Autowired
+    MTCRepository mtcRepository;
 
     @RequestMapping("/get")
     public List<Street> getStreets(){
         return streetRepository.findAll();
+    }
+
+
+    @PostMapping("/insert")
+    public Street insertStreet(@RequestBody Street street) {
+        return streetRepository.save(street);
+    }
+
+    @RequestMapping("/update")
+    public Street updateStreet(@RequestBody Street street,@RequestParam("id") long id) {
+        street.setId(id);
+        return streetRepository.save(street);
+    }
+
+    @RequestMapping("/del")
+    public void delStreet(@RequestParam("id") int id){
+        streetRepository.deleteById((long)id);
     }
 }
