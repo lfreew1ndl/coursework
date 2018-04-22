@@ -21,7 +21,7 @@ public class Region {
 
 
     @JsonIgnore
-    @OneToMany(mappedBy="region", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="region", fetch = FetchType.EAGER,  cascade=CascadeType.REMOVE)
     private List<Street> streets;
 
     public Region(String name, List<Street> streets) {

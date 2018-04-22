@@ -26,7 +26,7 @@ public class Queue {
     @Column(name = "age")
     private long age;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Street_id")
     private Street street;
 

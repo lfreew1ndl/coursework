@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ public class Number {
 
     @Column(name = "number")
     private long number;
+
 
     public Number(long number) {
         this.number = number;
@@ -40,4 +42,5 @@ public class Number {
     public void setNumber(long number) {
         this.number = number;
     }
+
 }

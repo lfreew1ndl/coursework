@@ -16,12 +16,14 @@ public class Phonenumber {
     private long id;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "number")
+    @JoinColumn(name = "number", insertable = false, updatable = false)
     private Number number;
 
+    @Column(name = "number")
+    private long number_id;
+
     @JsonIgnore
-    @OneToOne(mappedBy = "phonenumber", cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "phonenumber", fetch = FetchType.EAGER, cascade=CascadeType.REMOVE)
     private Consumer consumer;
 
     @Column(name = "housenumber")
@@ -33,9 +35,15 @@ public class Phonenumber {
     @Column(name = "interspace")
     private boolean interspace;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "Street_id")
+    @OneToOne(mappedBy = "phonenumber", cascade=CascadeType.REMOVE)
+    private Payphones payphones;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "Street_id", insertable = false, updatable = false)
     private Street street;
+
+    @Column(name = "street_id")
+    private long street_id;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "phonetype")
@@ -44,13 +52,15 @@ public class Phonenumber {
     public Phonenumber() {
     }
 
-    public Phonenumber(Number number, Consumer consumer, String houseNumber, Long apartment, boolean interspace, Street street, PhoneType phoneType) {
+    public Phonenumber(Number number, long number_id, Consumer consumer, String houseNumber, Long apartment, boolean interspace, Street street, long street_id, PhoneType phoneType) {
         this.number = number;
+        this.number_id = number_id;
         this.consumer = consumer;
         this.houseNumber = houseNumber;
         this.apartment = apartment;
         this.interspace = interspace;
         this.street = street;
+        this.street_id = street_id;
         this.phoneType = phoneType;
     }
 
@@ -68,6 +78,14 @@ public class Phonenumber {
 
     public void setNumber(Number number) {
         this.number = number;
+    }
+
+    public long getNumber_id() {
+        return number_id;
+    }
+
+    public void setNumber_id(long number_id) {
+        this.number_id = number_id;
     }
 
     public Consumer getConsumer() {
@@ -94,7 +112,7 @@ public class Phonenumber {
         this.apartment = apartment;
     }
 
-    public boolean getInterspace() {
+    public boolean isInterspace() {
         return interspace;
     }
 
@@ -108,6 +126,14 @@ public class Phonenumber {
 
     public void setStreet(Street street) {
         this.street = street;
+    }
+
+    public long getStreet_id() {
+        return street_id;
+    }
+
+    public void setStreet_id(long street_id) {
+        this.street_id = street_id;
     }
 
     public PhoneType getPhoneType() {

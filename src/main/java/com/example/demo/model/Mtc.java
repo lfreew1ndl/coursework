@@ -24,7 +24,7 @@ public class Mtc {
     private ATCType atcType;
 
     @JsonIgnore
-    @OneToMany(mappedBy="mtc", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="mtc", fetch = FetchType.EAGER, cascade=CascadeType.REMOVE)
     private List<Street> streets;
 
     public Mtc() {

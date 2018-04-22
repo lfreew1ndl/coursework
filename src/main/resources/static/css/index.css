@@ -56,3 +56,9 @@ body {
 .datagrid table tbody tr:last-child td {
     border-bottom: none;
 }
+
+.checkbox {
+    transform:scale(1.9);
+    opacity:0.9;
+    cursor:pointer;
+}

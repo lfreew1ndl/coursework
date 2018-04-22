@@ -22,11 +22,11 @@ public class City {
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "cityWhoCall",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cityWhoCall",fetch = FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval= true)
     private List<Calls> whoCallList;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "cityToWhomCall",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cityToWhomCall",fetch = FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval= true)
     private List<Calls> toWhomCallList;
 
     public City(long id, String name, List<Calls> whoCallList, List<Calls> toWhomCallList) {

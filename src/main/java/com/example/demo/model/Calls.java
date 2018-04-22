@@ -25,11 +25,11 @@ public class Calls {
     @Column(name = "data")
     private LocalDate data;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "citycodewhocall")
     private City cityWhoCall;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "citycodetowhomcall")
     private City cityToWhomCall;
 

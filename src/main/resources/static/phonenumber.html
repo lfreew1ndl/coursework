@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Street</title>
+    <title>Phonenumber</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -13,42 +13,44 @@
 </head>
 
 <body ng-app="App">
-Street
-<div ng-controller="Street as ctrl" id="block">
+Phonenumber
+<div ng-controller="Phonenumber as ctrl" id="block">
     <div class="container-fluid">
         <div class="datagrid">
             <table>
                 <thead>
                 <tr>
                     <th width="40px">Ідентифікатор</th>
-                    <th>назва</th>
-                    <th>регіон</th>
-                    <th>індекс</th>
-                    <th>кількість каналів</th>
-                    <th>атс</th>
+                    <th>номер телефона</th>
+                    <th>номер будинку</th>
+                    <th>квартира</th>
+                    <th>міжмісто</th>
+                    <th>тип телефону</th>
+                    <th>вулиця</th>
                     <th width="65px">
                         <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
-                                style="width: 63px" ng-click="ctrl.startInsertStreet()">
+                                style="width: 63px" ng-click="ctrl.startInsertPhonenumber()">
                             <i class="fas fa-plus"></i>
                         </button>
                     </th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="item in streets">
+                <tr ng-repeat="item in phonenumbers">
                     <th scope="row">{{item.id}}</th>
-                    <td scope="row">{{item.name}}</td>
-                    <td scope="row">{{item.region.name}}</td>
-                    <td scope="row">{{item.index}}</td>
-                    <td scope="row">{{item.channels}}</td>
-                    <td scope="row">{{item.mtc.name}}</td>
+                    <td scope="row">{{item.number.number}}</td>
+                    <td scope="row">{{item.houseNumber}}</td>
+                    <td scope="row">{{item.apartment}}</td>
+                    <td scope="row">{{item.interspace?'Так':'Ні'}}</td>
+                    <td scope="row">{{item.phoneType}}</td>
+                    <td scope="row">{{item.street.name}}</td>
                     <td scope="row">
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
-                                ng-click="ctrl.startUpdateStreet(item.id,item.name,item.region.id,item.index,item.channels,item.mtc.id)"
+                                ng-click="ctrl.startUpdatePhonenumber(item.id,item.number.id,item.houseNumber,item.apartment,item.interspace,item.phoneType,item.street.id)"
                                 style="width: 30px">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
-                        <button type="button" class="btn-danger" ng-click="ctrl.delFromStreet(item.id)"
+                        <button type="button" class="btn-danger" ng-click="ctrl.delFromPhonenumber(item.id)"
                                 style="width: 30px">
                             <i class="far fa-trash-alt"></i>
                         </button>
@@ -58,7 +60,7 @@ Street
             </table>
         </div>
 
-        <!--добавление Street-->
+        <!--добавление Phonenumber-->
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -70,38 +72,47 @@ Street
                         </button>
                     </div>
                     <div class="modal-body">
-                        Введіть назву вулиці
+                        Вкажіть номер телефону
                         <br>
-                        <input type="text" id="StreetName">
-                        <br>
-                        Вкажіть регіон
-                        <br>
-                        <select id="StreetRegion">
+                        <select id="PhonenumberNumber">
                         </select>
                         <br>
-                        Введіть індекс вулиці
+                        Введіть номер будинку
                         <br>
-                        <input type="text" id="StreetIndex">
+                        <input type="text" id="PhonenumberHouseNumber">
                         <br>
-                        Введіть кількість каналів
+                        Введіть номер квартири (якщо часний будинок залиште пустим)
                         <br>
-                        <input type="text" id="StreetChannels">
+                        <input type="text" id="PhonenumberApartment">
                         <br>
-                        Вкажіть атс
+                        Міжміський звязок?
                         <br>
-                        <select id="StreetMTC">
+                        <input type="checkbox" class="checkbox" id="PhonenumberInterspace">
+                        <br>
+                        Вкажіть тип телефона
+                        <br>
+                        <select id="PhonenumberPhoneType">
+                            <option>Основний</option>
+                            <option>Паралельний</option>
+                            <option>Спарений</option>
+                        </select>
+                        <br>
+                        Вкажіть вулицю
+                        <br>
+                        <select id="PhonenumberStreet">
                         </select>
                         <br>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
-                        <button type="button" class="btn btn-primary" ng-click="ctrl.insertToStreet()">Добавити</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.insertToPhonenumber()">Добавити
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!--обновленіє Street-->
+        <!--обновленіє Phonenumber-->
         <div class="modal fade" id="updateModal" tabindex="-2" role="dialog" aria-labelledby="updateModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -114,34 +125,43 @@ Street
                     </div>
                     <div class="modal-body">
                         Ідентифікатор
+                        <div id="PhonenumberIdUPD"></div>
                         <br>
-                        <div id="StreetIdUPD"></div>
-                        Введіть назву вулиці
+                        Вкажіть номер телефону
                         <br>
-                        <input type="text" id="StreetNameUPD">
-                        <br>
-                        Вкажіть регіон
-                        <br>
-                        <select id="StreetRegionUPD">
+                        <select id="PhonenumberNumberUPD">
                         </select>
                         <br>
-                        Введіть індекс вулиці
+                        Введіть номер будинку
                         <br>
-                        <input type="text" id="StreetIndexUPD">
+                        <input type="text" id="PhonenumberHouseNumberUPD">
                         <br>
-                        Введіть кількість каналів
+                        Введіть номер квартири (якщо часний будинок залиште пустим)
                         <br>
-                        <input type="text" id="StreetChannelsUPD">
+                        <input type="text" id="PhonenumberApartmentUPD">
                         <br>
-                        Вкажіть атс
+                        Міжміський звязок?
                         <br>
-                        <select id="StreetMTCUPD">
+                        <input type="checkbox" class="checkbox" id="PhonenumberInterspaceUPD">
+                        <br>
+                        Вкажіть тип телефона
+                        <br>
+                        <select id="PhonenumberPhoneTypeUPD">
+                            <option>Основний</option>
+                            <option>Паралельний</option>
+                            <option>Спарений</option>
+                        </select>
+                        <br>
+                        Вкажіть вулицю
+                        <br>
+                        <select id="PhonenumberStreetUPD">
                         </select>
                         <br>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
-                        <button type="button" class="btn btn-primary" ng-click="ctrl.updateStreet()">Обновити</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.updatePhonenumber()">Обновити
+                        </button>
                     </div>
                 </div>
             </div>
@@ -158,6 +178,6 @@ Street
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/street.js"></script>
+<script type="text/javascript" src="js/phonenumber.js"></script>
 
 </html>

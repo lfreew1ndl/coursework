@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.*;
-import com.example.demo.model.Number;
 import com.example.demo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +13,6 @@ public class StreetController {
 
     @Autowired
     StreetRepository streetRepository;
-    @Autowired
-    RegionRepository regionRepository;
-    @Autowired
-    MTCRepository mtcRepository;
 
     @RequestMapping("/get")
     public List<Street> getStreets(){

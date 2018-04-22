@@ -18,21 +18,21 @@ public class Street {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "index")
+    @Column(name = "[index]")
     private int index;
 
-    @Column(name = "channels")
+    @Column(name = "[channels]")
     private int channels;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "MTC_id",insertable = false,updatable = false)
     private Mtc mtc;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "street", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "street", fetch = FetchType.EAGER, cascade=CascadeType.REMOVE)
     private List<Phonenumber> phonenumbers;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "Region_id",insertable = false,updatable = false)
     private Region region;
 
@@ -42,8 +42,10 @@ public class Street {
     @Column(name = "mtc_id")
     private long mtc_id;
 
+    @OneToMany(mappedBy = "street", cascade=CascadeType.REMOVE)
+    private List<Queue> queues;
 
-    public Street(String name, Region region, long region_id, long mtc_id, int index, int channels, Mtc mtc, List<Phonenumber> phonenumbers) {
+    public Street(String name, Region region, long region_id, long mtc_id, int index, int channels, Mtc mtc) {
         this.name = name;
         this.region = region;
         this.region_id = region_id;
@@ -51,7 +53,6 @@ public class Street {
         this.index = index;
         this.channels = channels;
         this.mtc = mtc;
-        this.phonenumbers = phonenumbers;
     }
 
     public Street() {
@@ -103,14 +104,6 @@ public class Street {
 
     public void setChannels(int channels) {
         this.channels = channels;
-    }
-
-    public List<Phonenumber> getPhonenumbers() {
-        return phonenumbers;
-    }
-
-    public void setPhonenumbers(List<Phonenumber> phonenumbers) {
-        this.phonenumbers = phonenumbers;
     }
 
     public long getRegion_id() {
