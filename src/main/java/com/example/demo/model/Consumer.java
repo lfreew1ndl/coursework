@@ -33,8 +33,11 @@ public class Consumer {
     private boolean beneficiary;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "phonenumber_id")
+    @JoinColumn(name = "phonenumber_id", insertable = false, updatable = false)
     private Phonenumber phonenumber;
+
+    @Column(name = "phonenumber_id")
+    private long phonenumber_id;
 
     @Column(name = "connected")
     private boolean connected;
@@ -50,7 +53,8 @@ public class Consumer {
     public Consumer() {
     }
 
-    public Consumer(String firstName, String lastName, String sex, long age, long balance, boolean beneficiary, Phonenumber phonenumber, boolean connected) {
+
+    public Consumer(String firstName, String lastName, String sex, long age, long balance, boolean beneficiary, Phonenumber phonenumber, long phonenumber_id, boolean connected) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
@@ -58,6 +62,7 @@ public class Consumer {
         this.balance = balance;
         this.beneficiary = beneficiary;
         this.phonenumber = phonenumber;
+        this.phonenumber_id = phonenumber_id;
         this.connected = connected;
     }
 
@@ -132,4 +137,12 @@ public class Consumer {
         this.connected = connected;
     }
 
+
+    public long getPhonenumber_id() {
+        return phonenumber_id;
+    }
+
+    public void setPhonenumber_id(long phonenumber_id) {
+        this.phonenumber_id = phonenumber_id;
+    }
 }
