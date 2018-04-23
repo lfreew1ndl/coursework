@@ -32,7 +32,7 @@ Payphone
                 </thead>
                 <tbody>
                 <tr ng-repeat="item in payphones">
-                    <th scope="row">{{item.id}}</th>
+                    <td scope="row">{{item.id}}</td>
                     <td scope="row">{{item.phonenumber.number.number}}</td>
 
                     <td scope="row">
@@ -57,7 +57,7 @@ Payphone
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addModalLabel">Добавлення</h5>
+                        <h5 class="modal-title" id="addModalLabel">Додавання запису</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -71,7 +71,7 @@ Payphone
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
-                        <button type="button" class="btn btn-primary" ng-click="ctrl.insertToPayphone()">Добавити</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.insertToPayphone()">Додати</button>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@ Payphone
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="updateModalLabel">Обновлення</h5>
+                        <h5 class="modal-title" id="updateModalLabel">Обновлення запису</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
                             <span aria-hidden="true">×</span>
                         </button>

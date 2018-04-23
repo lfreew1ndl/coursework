@@ -36,7 +36,7 @@ Call
                 </thead>
                 <tbody>
                 <tr ng-repeat="item in calls">
-                    <th scope="row">{{item.id}}</th>
+                    <td scope="row">{{item.id}}</td>
                     <td scope="row">{{item.whoCallNumber}}</td>
                     <td scope="row">{{item.toWhomCallNumber}}</td>
                     <td scope="row">{{item.cityWhoCall.name}}</td>
@@ -64,7 +64,7 @@ Call
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addModalLabel">Добавлення</h5>
+                        <h5 class="modal-title" id="addModalLabel">Додавання запису</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -96,7 +96,7 @@ Call
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
-                        <button type="button" class="btn btn-primary" ng-click="ctrl.insertToCall()">Добавити</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.insertToCall()">Додати</button>
                     </div>
                 </div>
             </div>
@@ -108,7 +108,7 @@ Call
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="updateModalLabel">Обновлення</h5>
+                        <h5 class="modal-title" id="updateModalLabel">Обновлення запису</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
                             <span aria-hidden="true">×</span>
                         </button>

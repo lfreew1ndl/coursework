@@ -36,7 +36,7 @@ Street
                 </thead>
                 <tbody>
                 <tr ng-repeat="item in streets">
-                    <th scope="row">{{item.id}}</th>
+                    <td scope="row">{{item.id}}</td>
                     <td scope="row">{{item.name}}</td>
                     <td scope="row">{{item.region.name}}</td>
                     <td scope="row">{{item.index}}</td>
@@ -64,7 +64,7 @@ Street
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addModalLabel">Добавлення</h5>
+                        <h5 class="modal-title" id="addModalLabel">Додавання запису</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -95,7 +95,7 @@ Street
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
-                        <button type="button" class="btn btn-primary" ng-click="ctrl.insertToStreet()">Добавити</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.insertToStreet()">Додати</button>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@ Street
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="updateModalLabel">Обновлення</h5>
+                        <h5 class="modal-title" id="updateModalLabel">Обновлення запису</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
                             <span aria-hidden="true">×</span>
                         </button>
