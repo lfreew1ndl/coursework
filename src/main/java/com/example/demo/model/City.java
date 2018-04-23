@@ -22,14 +22,14 @@ public class City {
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "cityWhoCall",fetch = FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval= true)
-    private List<Calls> whoCallList;
+    @OneToMany(mappedBy = "cityWhoCall",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
+    private List<Call> whoCallList;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "cityToWhomCall",fetch = FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval= true)
-    private List<Calls> toWhomCallList;
+    @OneToMany(mappedBy = "cityToWhomCall",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
+    private List<Call> toWhomCallList;
 
-    public City(long id, String name, List<Calls> whoCallList, List<Calls> toWhomCallList) {
+    public City(long id, String name, List<Call> whoCallList, List<Call> toWhomCallList) {
         this.id = id;
         this.name = name;
         this.whoCallList = whoCallList;
@@ -39,19 +39,19 @@ public class City {
     public City() {
     }
 
-    public List<Calls> getWhoCallList() {
+    public List<Call> getWhoCallList() {
         return whoCallList;
     }
 
-    public void setWhoCallList(List<Calls> whoCallList) {
+    public void setWhoCallList(List<Call> whoCallList) {
         this.whoCallList = whoCallList;
     }
 
-    public List<Calls> getToWhomCallList() {
+    public List<Call> getToWhomCallList() {
         return toWhomCallList;
     }
 
-    public void setToWhomCallList(List<Calls> toWhomCallList) {
+    public void setToWhomCallList(List<Call> toWhomCallList) {
         this.toWhomCallList = toWhomCallList;
     }
 

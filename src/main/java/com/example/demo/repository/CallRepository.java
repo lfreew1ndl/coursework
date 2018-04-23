@@ -1,7 +1,7 @@
 package com.example.demo.repository;
 
-import com.example.demo.model.Mtc;
+import com.example.demo.model.Call;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MTCRepository extends JpaRepository<Mtc,Long> {
+public interface CallRepository extends JpaRepository<Call,Long> {
 }

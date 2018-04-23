@@ -15,7 +15,7 @@ App.controller('Consumer', function ($http, $scope) {
                 var option = document.createElement("option");
                 option.text = phonenumbers[i].number.number;
                 option.value = phonenumbers[i].id;
-                selector.add(option);;
+                selector.add(option);
             }
         });
     };
