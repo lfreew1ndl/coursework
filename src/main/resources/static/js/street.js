@@ -15,7 +15,7 @@ App.controller('Street', function ($http, $scope) {
                 var option = document.createElement("option");
                 option.text = regions[i].name;
                 option.value = regions[i].id;
-                selector.add(option);;
+                selector.add(option);
             }
         });
         $http.get('/mtces/get').then(function (response) {

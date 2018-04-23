@@ -1,11 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.*;
-import com.example.demo.model.Number;
 import com.example.demo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,10 +12,26 @@ import java.util.List;
 public class PayphonesController {
 
     @Autowired
-    PayphonesRepository payphonesRepository;
+    PayphoneRepository payphoneRepository;
 
     @RequestMapping("/get")
-    public List<Payphones> getPayphones(){
-        return payphonesRepository.findAll();
+    public List<Payphone> getPayphones(){
+        return payphoneRepository.findAll();
+    }
+
+    @PostMapping("/insert")
+    public Payphone insertPayphone(@RequestBody Payphone payphone) {
+        return payphoneRepository.save(payphone);
+    }
+
+    @RequestMapping("/update")
+    public Payphone updatePayphone(@RequestBody Payphone payphone, @RequestParam("id") long id) {
+        payphone.setId(id);
+        return payphoneRepository.save(payphone);
+    }
+
+    @RequestMapping("/del")
+    public void delPayphone(@RequestParam("id") int id){
+        payphoneRepository.deleteById((long)id);
     }
 }

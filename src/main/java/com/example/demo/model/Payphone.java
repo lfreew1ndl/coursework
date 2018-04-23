@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "payphones")
 @EntityListeners(AuditingEntityListener.class)
-public class Payphones {
+public class Payphone {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,14 +16,18 @@ public class Payphones {
 
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "phonenumber_id")
+    @JoinColumn(name = "phonenumber_id",insertable = false,updatable = false)
     private Phonenumber phonenumber;
 
-    public Payphones() {
+    @Column(name = "phonenumber_id")
+    private long phonenumber_id;
+
+    public Payphone() {
     }
 
-    public Payphones(Phonenumber phonenumber) {
+    public Payphone(Phonenumber phonenumber, long phonenumber_id) {
         this.phonenumber = phonenumber;
+        this.phonenumber_id = phonenumber_id;
     }
 
     public long getId() {
@@ -40,5 +44,13 @@ public class Payphones {
 
     public void setPhonenumber(Phonenumber phonenumber) {
         this.phonenumber = phonenumber;
+    }
+
+    public long getPhonenumber_id() {
+        return phonenumber_id;
+    }
+
+    public void setPhonenumber_id(long phonenumber_id) {
+        this.phonenumber_id = phonenumber_id;
     }
 }

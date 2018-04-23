@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Queue</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+</head>
+
+<body ng-app="App">
+Queue
+<div ng-controller="Queue as ctrl" id="block">
+    <div class="container-fluid">
+        <div class="datagrid">
+            <table>
+                <thead>
+                <tr>
+                    <th width="40px">Ідентифікатор</th>
+                    <th>ім'я</th>
+                    <th>фамілія</th>
+                    <th>стать</th>
+                    <th>вік</th>
+                    <th>вулиця</th>
+                    <th>номер будинку</th>
+                    <th>квартира</th>
+                    <th>пільговик</th>
+                    <th width="65px">
+                        <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
+                                style="width: 63px" ng-click="ctrl.startInsertQueue()">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in queues">
+                    <th scope="row">{{item.id}}</th>
+                    <td scope="row">{{item.firstName}}</td>
+                    <td scope="row">{{item.lastName}}</td>
+                    <td scope="row">{{item.sex}}</td>
+                    <td scope="row">{{item.age}}</td>
+                    <td scope="row">{{item.street.name}}</td>
+                    <td scope="row">{{item.houseNumber}}</td>
+                    <td scope="row">{{item.apartment}}</td>
+                    <td scope="row">{{item.beneficiary?'Так':'Ні'}}</td>
+                    <td scope="row">
+                        <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
+                                ng-click="ctrl.startUpdateQueue(item.id,item.firstName,item.lastName,item.sex,item.age,item.street.id,item.houseNumber,item.apartment,item.beneficiary)"
+                                style="width: 30px">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button type="button" class="btn-danger" ng-click="ctrl.delFromQueue(item.id)"
+                                style="width: 30px">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--добавление Queue-->
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">Добавлення</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Введіть ім'я
+                        <br>
+                        <input type="text" id="QueueFirstName">
+                        <br>
+                        Введіть фамілію
+                        <br>
+                        <input type="text" id="QueueLastName">
+                        <br>
+                        Вкажіть стать
+                        <br>
+                        <select id="QueueSex">
+                            <option>Чоловік</option>
+                            <option>Жінка</option>
+                            <option>Програміст</option>
+                        </select>
+                        <br>
+                        Введіть вік
+                        <br>
+                        <input type="text" id="QueueAge">
+                        <br>
+                        Введіть номер будинку
+                        <br>
+                        <input type="text" id="QueueHouseNumber">
+                        <br>
+                        Введіть квартиру
+                        <br>
+                        <input type="text" id="QueueApartment">
+                        <br>
+                        Пільговик?
+                        <br>
+                        <input type="checkbox" class="checkbox" id="QueueBeneficiary">
+                        <br>
+                        <select id="QueueStreet">
+                        </select>
+                        <br>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.insertToQueue()">Добавити</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--обновленіє Queue-->
+        <div class="modal fade" id="updateModal" tabindex="-2" role="dialog" aria-labelledby="updateModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateModalLabel">Обновлення</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Ідентифікатор
+                        <div id="QueueIdUPD"></div>
+                        Введіть ім'я
+                        <br>
+                        <input type="text" id="QueueFirstNameUPD">
+                        <br>
+                        Введіть фамілію
+                        <br>
+                        <input type="text" id="QueueLastNameUPD">
+                        <br>
+                        Вкажіть стать
+                        <br>
+                        <select id="QueueSexUPD">
+                            <option>Чоловік</option>
+                            <option>Жінка</option>
+                            <option>Програміст</option>
+                        </select>
+                        <br>
+                        Введіть вік
+                        <br>
+                        <input type="text" id="QueueAgeUPD">
+                        <br>
+                        Введіть номер будинку
+                        <br>
+                        <input type="text" id="QueueHouseNumberUPD">
+                        <br>
+                        Введіть квартиру
+                        <br>
+                        <input type="text" id="QueueApartmentUPD">
+                        <br>
+                        Пільговик?
+                        <br>
+                        <input type="checkbox" class="checkbox" id="QueueBeneficiaryUPD">
+                        <br>
+                        <select id="QueueStreetUPD">
+                        </select>
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.updateQueue()">Обновити</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+</body>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/queue.js"></script>
+
+</html>

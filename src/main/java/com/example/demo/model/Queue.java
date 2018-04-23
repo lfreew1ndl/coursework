@@ -27,8 +27,11 @@ public class Queue {
     private long age;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "Street_id")
+    @JoinColumn(name = "Street_id",insertable = false,updatable = false)
     private Street street;
+
+    @Column(name = "street_id")
+    private long street_id;
 
     @Column(name = "housenumber")
     private String houseNumber;
@@ -39,12 +42,13 @@ public class Queue {
     @Column(name = "beneficiary")
     private boolean beneficiary;
 
-    public Queue(String firstName, String lastName, String sex, long age, Street street, String houseNumber, String apartment, boolean beneficiary) {
+    public Queue(String firstName, String lastName, String sex, long age, Street street, long street_id, String houseNumber, String apartment, boolean beneficiary) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
         this.age = age;
         this.street = street;
+        this.street_id = street_id;
         this.houseNumber = houseNumber;
         this.apartment = apartment;
         this.beneficiary = beneficiary;
@@ -123,5 +127,13 @@ public class Queue {
 
     public void setBeneficiary(boolean beneficiary) {
         this.beneficiary = beneficiary;
+    }
+
+    public long getStreet_id() {
+        return street_id;
+    }
+
+    public void setStreet_id(long street_id) {
+        this.street_id = street_id;
     }
 }
