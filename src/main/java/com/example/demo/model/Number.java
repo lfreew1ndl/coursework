@@ -1,46 +1,26 @@
 package com.example.demo.model;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import javax.persistence.*;
-
-@Entity
-@Table(name = "number")
-@EntityListeners(AuditingEntityListener.class)
 public class Number {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
-
-    @Column(name = "number")
-    private long number;
+  private long id;
+  private long number;
 
 
-    public Number(long number) {
-        this.number = number;
-    }
+  public long getId() {
+    return id;
+  }
 
-    public Number() {
-    }
+  public void setId(long id) {
+    this.id = id;
+  }
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+  public long getNumber() {
+    return number;
+  }
 
-    public long getNumber() {
-        return number;
-    }
-
-    public void setNumber(long number) {
-        this.number = number;
-    }
+  public void setNumber(long number) {
+    this.number = number;
+  }
 
 }

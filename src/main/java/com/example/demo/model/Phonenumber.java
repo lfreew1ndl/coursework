@@ -1,146 +1,76 @@
 package com.example.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import javax.persistence.*;
-
-@Entity
-@Table(name = "phonenumber")
-@EntityListeners(AuditingEntityListener.class)
 public class Phonenumber {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+  private long id;
+  private long number;
+  private String houseNumber;
+  private long apartment;
+  private long interspace;
+  private long streetId;
+  private String phoneType;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "number", insertable = false, updatable = false)
-    private Number number;
 
-    @Column(name = "number")
-    private long number_id;
+  public long getId() {
+    return id;
+  }
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "phonenumber", fetch = FetchType.EAGER, cascade=CascadeType.REMOVE)
-    private Consumer consumer;
+  public void setId(long id) {
+    this.id = id;
+  }
 
-    @Column(name = "housenumber")
-    private String houseNumber;
 
-    @Column(name = "apartment")
-    private Long apartment;
+  public long getNumber() {
+    return number;
+  }
 
-    @Column(name = "interspace")
-    private boolean interspace;
+  public void setNumber(long number) {
+    this.number = number;
+  }
 
-    @OneToOne(mappedBy = "phonenumber", cascade=CascadeType.REMOVE)
-    private Payphone payphone;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "Street_id", insertable = false, updatable = false)
-    private Street street;
+  public String getHouseNumber() {
+    return houseNumber;
+  }
 
-    @Column(name = "street_id")
-    private long street_id;
+  public void setHouseNumber(String houseNumber) {
+    this.houseNumber = houseNumber;
+  }
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "phonetype")
-    private PhoneType phoneType;
 
-    public Phonenumber() {
-    }
+  public long getApartment() {
+    return apartment;
+  }
 
-    public Phonenumber(Number number, long number_id, Consumer consumer, String houseNumber, Long apartment, boolean interspace, Street street, long street_id, PhoneType phoneType) {
-        this.number = number;
-        this.number_id = number_id;
-        this.consumer = consumer;
-        this.houseNumber = houseNumber;
-        this.apartment = apartment;
-        this.interspace = interspace;
-        this.street = street;
-        this.street_id = street_id;
-        this.phoneType = phoneType;
-    }
+  public void setApartment(long apartment) {
+    this.apartment = apartment;
+  }
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+  public long getInterspace() {
+    return interspace;
+  }
 
-    public Number getNumber() {
-        return number;
-    }
+  public void setInterspace(long interspace) {
+    this.interspace = interspace;
+  }
 
-    public void setNumber(Number number) {
-        this.number = number;
-    }
 
-    public long getNumber_id() {
-        return number_id;
-    }
+  public long getStreetId() {
+    return streetId;
+  }
 
-    public void setNumber_id(long number_id) {
-        this.number_id = number_id;
-    }
+  public void setStreetId(long streetId) {
+    this.streetId = streetId;
+  }
 
-    public Consumer getConsumer() {
-        return consumer;
-    }
 
-    public void setConsumer(Consumer consumer) {
-        this.consumer = consumer;
-    }
+  public String getPhoneType() {
+    return phoneType;
+  }
 
-    public String getHouseNumber() {
-        return houseNumber;
-    }
+  public void setPhoneType(String phoneType) {
+    this.phoneType = phoneType;
+  }
 
-    public void setHouseNumber(String houseNumber) {
-        this.houseNumber = houseNumber;
-    }
-
-    public Long getApartment() {
-        return apartment;
-    }
-
-    public void setApartment(Long apartment) {
-        this.apartment = apartment;
-    }
-
-    public boolean isInterspace() {
-        return interspace;
-    }
-
-    public void setInterspace(boolean interspace) {
-        this.interspace = interspace;
-    }
-
-    public Street getStreet() {
-        return street;
-    }
-
-    public void setStreet(Street street) {
-        this.street = street;
-    }
-
-    public long getStreet_id() {
-        return street_id;
-    }
-
-    public void setStreet_id(long street_id) {
-        this.street_id = street_id;
-    }
-
-    public PhoneType getPhoneType() {
-        return phoneType;
-    }
-
-    public void setPhoneType(PhoneType phoneType) {
-        this.phoneType = phoneType;
-    }
 }
