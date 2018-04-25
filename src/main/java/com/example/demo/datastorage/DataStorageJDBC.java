@@ -26,11 +26,11 @@ public class DataStorageJDBC {
         statement = con.createStatement();
     }
 
-    public ResultSet executeQuery(String query) throws SQLException {
+    public synchronized ResultSet executeQuery(String query) throws SQLException {
         return statement.executeQuery(query);
     }
 
-    public int executeUpdate(String query) throws SQLException{
+    public synchronized int executeUpdate(String query) throws SQLException{
         return  statement.executeUpdate(query);
     }
 

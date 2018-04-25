@@ -1,6 +1,8 @@
-package com.example.demo.service.region;
+package com.example.demo.service.mtc;
 
+import com.example.demo.dao.mtc.IMtcDAO;
 import com.example.demo.dao.region.IRegionDAO;
+import com.example.demo.model.Mtc;
 import com.example.demo.model.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,19 +10,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RegionServiceImlp implements IRegionService{
+public class MTCServiceImpl implements IMtcService {
 
     @Autowired
-    IRegionDAO dao;
+    IMtcDAO dao;
 
     @Override
-    public Region save(Region region) {
-        return dao.save(region);
+    public Mtc save(Mtc mtc) {
+        return dao.save(mtc);
     }
 
     @Override
-    public Region update(Region region) {
-        return dao.update(region);
+    public Mtc update(Mtc mtc) {
+        return dao.update(mtc);
     }
 
     @Override
@@ -29,7 +31,7 @@ public class RegionServiceImlp implements IRegionService{
     }
 
     @Override
-    public List<Region> getAll() {
+    public List<Mtc> getAll() {
         return dao.getAll();
     }
 }

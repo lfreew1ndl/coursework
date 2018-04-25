@@ -6,6 +6,14 @@ public class City {
   private String name;
 
 
+  public City(long id, String name) {
+    this.id = id;
+    this.name = name;
+  }
+
+  public City() {
+  }
+
   public long getId() {
     return id;
   }

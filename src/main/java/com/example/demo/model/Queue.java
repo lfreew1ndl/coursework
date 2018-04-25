@@ -7,11 +7,27 @@ public class Queue {
   private String lastName;
   private String sex;
   private long age;
-  private long streetId;
+  private long street_id;
   private String houseNumber;
   private String apartment;
-  private long beneficiary;
+  private boolean beneficiary;
+  private Street street;
 
+
+  public Queue(long id, String firstName, String lastName, String sex, long age, long street_id, String houseNumber, String apartment, boolean beneficiary) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.sex = sex;
+    this.age = age;
+    this.street_id = street_id;
+    this.houseNumber = houseNumber;
+    this.apartment = apartment;
+    this.beneficiary = beneficiary;
+  }
+
+  public Queue() {
+  }
 
   public long getId() {
     return id;
@@ -21,7 +37,6 @@ public class Queue {
     this.id = id;
   }
 
-
   public String getFirstName() {
     return firstName;
   }
@@ -29,7 +44,6 @@ public class Queue {
   public void setFirstName(String firstName) {
     this.firstName = firstName;
   }
-
 
   public String getLastName() {
     return lastName;
@@ -39,7 +53,6 @@ public class Queue {
     this.lastName = lastName;
   }
 
-
   public String getSex() {
     return sex;
   }
@@ -47,7 +60,6 @@ public class Queue {
   public void setSex(String sex) {
     this.sex = sex;
   }
-
 
   public long getAge() {
     return age;
@@ -57,15 +69,13 @@ public class Queue {
     this.age = age;
   }
 
-
-  public long getStreetId() {
-    return streetId;
+  public long getStreet_id() {
+    return street_id;
   }
 
-  public void setStreetId(long streetId) {
-    this.streetId = streetId;
+  public void setStreet_id(long street_id) {
+    this.street_id = street_id;
   }
-
 
   public String getHouseNumber() {
     return houseNumber;
@@ -75,7 +85,6 @@ public class Queue {
     this.houseNumber = houseNumber;
   }
 
-
   public String getApartment() {
     return apartment;
   }
@@ -84,13 +93,19 @@ public class Queue {
     this.apartment = apartment;
   }
 
-
-  public long getBeneficiary() {
+  public boolean getBeneficiary() {
     return beneficiary;
   }
 
-  public void setBeneficiary(long beneficiary) {
+  public void setBeneficiary(boolean beneficiary) {
     this.beneficiary = beneficiary;
   }
 
+  public Street getStreet() {
+    return street;
+  }
+
+  public void setStreet(Street street) {
+    this.street = street;
+  }
 }

@@ -3,7 +3,7 @@ package com.example.demo.model;
 
 import java.time.LocalDate;
 
-public class Calls {
+public class Call {
 
   private long id;
   private long whoCallNumber;
@@ -12,7 +12,10 @@ public class Calls {
   private long cityCodeToWhomCall;
   private long cityCodeWhoCall;
 
-  public Calls(long id, long whoCallNumber, long toWhomCallNumber, LocalDate data, long cityCodeToWhomCall, long cityCodeWhoCall) {
+  private City cityToWhomCall;
+  private City cityWhoCall;
+
+  public Call(long id, long whoCallNumber, long toWhomCallNumber, LocalDate data, long cityCodeToWhomCall, long cityCodeWhoCall) {
     this.id = id;
     this.whoCallNumber = whoCallNumber;
     this.toWhomCallNumber = toWhomCallNumber;
@@ -21,7 +24,7 @@ public class Calls {
     this.cityCodeWhoCall = cityCodeWhoCall;
   }
 
-  public Calls() {
+  public Call() {
   }
 
   public long getId() {
@@ -66,6 +69,22 @@ public class Calls {
 
   public long getCityCodeWhoCall() {
     return cityCodeWhoCall;
+  }
+
+  public City getCityToWhomCall() {
+    return cityToWhomCall;
+  }
+
+  public void setCityToWhomCall(City cityToWhomCall) {
+    this.cityToWhomCall = cityToWhomCall;
+  }
+
+  public City getCityWhoCall() {
+    return cityWhoCall;
+  }
+
+  public void setCityWhoCall(City cityWhoCall) {
+    this.cityWhoCall = cityWhoCall;
   }
 
   public void setCityCodeWhoCall(long cityCodeWhoCall) {

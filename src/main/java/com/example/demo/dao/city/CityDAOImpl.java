@@ -1,7 +1,7 @@
-package com.example.demo.dao.region;
+package com.example.demo.dao.city;
 
 import com.example.demo.config.DataStorageJDBC;
-import com.example.demo.model.Region;
+import com.example.demo.model.City;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,17 +10,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Component
-public class RegionDAOImpl implements IRegionDAO {
-
+public class CityDAOImpl implements ICityDAO {
     @Autowired
     DataStorageJDBC storage;
 
     @Override
-    public Region save(Region region) {
+    public City save(City city) {
         try {
-            String query = "insert into region (name) values ('"+region.getName()+"')";
+            String query = "insert into city (id,name) values ("+city.getId()+",'"+city.getName()+"')";
             storage.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -29,9 +27,9 @@ public class RegionDAOImpl implements IRegionDAO {
     }
 
     @Override
-    public Region update(Region region) {
+    public City update(City city) {
         try {
-            String query = "update region set name = '" + region.getName()+"' where id ="+ region.getId();
+            String query = "update city set id="+city.getId()+",name = '" + city.getName()+"' where id ="+ city.getId();
             storage.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -42,7 +40,7 @@ public class RegionDAOImpl implements IRegionDAO {
     @Override
     public void deleteById(int id) {
         try {
-            String query = "delete from region where id = "+ id;
+            String query = "delete from city where id = "+ id;
             storage.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -50,13 +48,13 @@ public class RegionDAOImpl implements IRegionDAO {
     }
 
     @Override
-    public List<Region> getAll() {
-        List<Region> list = new ArrayList<>();
+    public List<City> getAll() {
+        List<City> list = new ArrayList<>();
         try {
-            String query = "select * from region";
+            String query = "select * from city";
             ResultSet resultSet = storage.executeQuery(query);
             while (resultSet.next()){
-                list.add(new Region(
+                list.add(new City(
                         resultSet.getInt("id"),
                         resultSet.getString("name")
                 ));
@@ -65,6 +63,9 @@ public class RegionDAOImpl implements IRegionDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return list;
     }
 }
+
+

@@ -1,7 +1,7 @@
-package com.example.demo.dao.region;
+package com.example.demo.dao.number;
 
 import com.example.demo.config.DataStorageJDBC;
-import com.example.demo.model.Region;
+import com.example.demo.model.Number;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,17 +10,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Component
-public class RegionDAOImpl implements IRegionDAO {
-
+public class NumberDAOImpl implements INumberDAO {
     @Autowired
     DataStorageJDBC storage;
 
     @Override
-    public Region save(Region region) {
+    public Number save(Number number) {
         try {
-            String query = "insert into region (name) values ('"+region.getName()+"')";
+            String query = "insert into number (number) values ("+number.getNumber()+")";
             storage.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -29,9 +27,9 @@ public class RegionDAOImpl implements IRegionDAO {
     }
 
     @Override
-    public Region update(Region region) {
+    public Number update(Number number) {
         try {
-            String query = "update region set name = '" + region.getName()+"' where id ="+ region.getId();
+            String query = "update number set number = " + number.getNumber()+" where id ="+ number.getId();
             storage.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -42,7 +40,7 @@ public class RegionDAOImpl implements IRegionDAO {
     @Override
     public void deleteById(int id) {
         try {
-            String query = "delete from region where id = "+ id;
+            String query = "delete from number where id = "+ id;
             storage.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -50,21 +48,22 @@ public class RegionDAOImpl implements IRegionDAO {
     }
 
     @Override
-    public List<Region> getAll() {
-        List<Region> list = new ArrayList<>();
+    public List<Number> getAll() {
+        List<Number> list = new ArrayList<>();
         try {
-            String query = "select * from region";
+            String query = "select * from number";
             ResultSet resultSet = storage.executeQuery(query);
             while (resultSet.next()){
-                list.add(new Region(
+                list.add(new Number(
                         resultSet.getInt("id"),
-                        resultSet.getString("name")
+                        resultSet.getInt("number")
                 ));
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return list;
     }
 }

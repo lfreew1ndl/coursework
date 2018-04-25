@@ -3,13 +3,27 @@ package com.example.demo.model;
 public class Phonenumber {
 
   private long id;
-  private long number;
+  private long number_id;
   private String houseNumber;
-  private long apartment;
-  private long interspace;
-  private long streetId;
-  private String phoneType;
+  private Long apartment;
+  private boolean interspace;
+  private long street_id;
+  private PhoneType phoneType;
+  private Number number;
+  private Street street;
 
+  public Phonenumber() {
+  }
+
+  public Phonenumber(long id, long number_id, String houseNumber, Long apartment, boolean interspace, long street_id, PhoneType phoneType) {
+    this.id = id;
+    this.number_id = number_id;
+    this.houseNumber = houseNumber;
+    this.apartment = apartment;
+    this.interspace = interspace;
+    this.street_id = street_id;
+    this.phoneType = phoneType;
+  }
 
   public long getId() {
     return id;
@@ -19,15 +33,13 @@ public class Phonenumber {
     this.id = id;
   }
 
-
-  public long getNumber() {
-    return number;
+  public long getNumber_id() {
+    return number_id;
   }
 
-  public void setNumber(long number) {
-    this.number = number;
+  public void setNumber_id(long number_id) {
+    this.number_id = number_id;
   }
-
 
   public String getHouseNumber() {
     return houseNumber;
@@ -37,40 +49,51 @@ public class Phonenumber {
     this.houseNumber = houseNumber;
   }
 
-
-  public long getApartment() {
+  public Long getApartment() {
     return apartment;
   }
 
-  public void setApartment(long apartment) {
+  public void setApartment(Long apartment) {
     this.apartment = apartment;
   }
 
-
-  public long getInterspace() {
+  public boolean getInterspace() {
     return interspace;
   }
 
-  public void setInterspace(long interspace) {
+  public void setInterspace(boolean interspace) {
     this.interspace = interspace;
   }
 
-
-  public long getStreetId() {
-    return streetId;
+  public long getStreet_id() {
+    return street_id;
   }
 
-  public void setStreetId(long streetId) {
-    this.streetId = streetId;
+  public void setStreet_id(long street_id) {
+    this.street_id = street_id;
   }
 
-
-  public String getPhoneType() {
+  public PhoneType getPhoneType() {
     return phoneType;
   }
 
-  public void setPhoneType(String phoneType) {
+  public void setPhoneType(PhoneType phoneType) {
     this.phoneType = phoneType;
   }
 
+  public Number getNumber() {
+    return number;
+  }
+
+  public void setNumber(Number number) {
+    this.number = number;
+  }
+
+  public Street getStreet() {
+    return street;
+  }
+
+  public void setStreet(Street street) {
+    this.street = street;
+  }
 }

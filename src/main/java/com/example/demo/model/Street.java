@@ -4,13 +4,26 @@ public class Street {
 
   private long id;
   private String name;
-  private long regionId;
+  private long region_id;
   private long index;
   private long channels;
-  private long mtcId;
+  private long mtc_id;
+  private Region region;
+  private Mtc mtc;
 
+    public Street(long id, String name, long region_id, long index, long channels, long mtc_id) {
+        this.id = id;
+        this.name = name;
+        this.region_id = region_id;
+        this.index = index;
+        this.channels = channels;
+        this.mtc_id = mtc_id;
+    }
 
-  public long getId() {
+    public Street() {
+    }
+
+    public long getId() {
     return id;
   }
 
@@ -28,12 +41,12 @@ public class Street {
   }
 
 
-  public long getRegionId() {
-    return regionId;
+  public long getRegion_id() {
+    return region_id;
   }
 
-  public void setRegionId(long regionId) {
-    this.regionId = regionId;
+  public void setRegion_id(long region_id) {
+    this.region_id = region_id;
   }
 
 
@@ -55,12 +68,27 @@ public class Street {
   }
 
 
-  public long getMtcId() {
-    return mtcId;
+  public long getMtc_id() {
+    return mtc_id;
   }
 
-  public void setMtcId(long mtcId) {
-    this.mtcId = mtcId;
+  public void setMtc_id(long mtc_id) {
+    this.mtc_id = mtc_id;
   }
 
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
+    }
+
+    public Mtc getMtc() {
+        return mtc;
+    }
+
+    public void setMtc(Mtc mtc) {
+        this.mtc = mtc;
+    }
 }

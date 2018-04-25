@@ -5,8 +5,15 @@ public class Number {
   private long id;
   private long number;
 
+  public Number(long id, long number) {
+    this.id = id;
+    this.number = number;
+  }
 
-  public long getId() {
+    public Number() {
+    }
+
+    public long getId() {
     return id;
   }
 

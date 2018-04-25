@@ -3,6 +3,7 @@ var App = angular.module('App', []);
 App.controller('Consumer', function ($http, $scope) {
     $http.get('/consumers/get').then(function (response) {
         $scope.consumers = response.data;
+        console.log(response);
     });
 
 
