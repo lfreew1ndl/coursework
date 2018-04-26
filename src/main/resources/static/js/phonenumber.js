@@ -1,7 +1,11 @@
 var App = angular.module('App', []);
 
 App.controller('Phonenumber', function ($http, $scope) {
+    var time = performance.now();
     $http.get('/phonenumbers/get').then(function (response) {
+        time = performance.now() - time;
+        console.log('Время выполнения = ', time);
+        alert("--------");
         $scope.phonenumbers = response.data;
     });
 
@@ -32,6 +36,8 @@ App.controller('Phonenumber', function ($http, $scope) {
     };
 
     this.insertToPhonenumber = function add() {
+        ;
+
         var houseNumber = document.getElementById("PhonenumberHouseNumber").value;
         var apartment = document.getElementById("PhonenumberApartment").value;
 
@@ -58,7 +64,11 @@ App.controller('Phonenumber', function ($http, $scope) {
                 phoneType: phoneType
             }
         };
+        var time = performance.now()
         $http(req).then(function (resp) {
+            time = performance.now() - time;
+            console.log('Время выполнения = ', time);
+            alert("--------");
             window.location.reload();
         })
     };
@@ -126,13 +136,21 @@ App.controller('Phonenumber', function ($http, $scope) {
                 phoneType: phoneType
             }
         };
+        var time = performance.now();
         $http(req).then(function (resp) {
+            time = performance.now() - time;
+            console.log('Время выполнения = ', time);
+            alert("--------");
             window.location.reload();
         })
     };
 
+    time = performance.now();
     this.delFromPhonenumber = function del(id) {
         $http.get('/phonenumbers/del?id=' + id).then(function () {
+            time = performance.now() - time;
+            console.log('Время выполнения = ', time);
+            alert("--------");
             window.location.reload();
         });
     };
