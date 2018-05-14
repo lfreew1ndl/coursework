@@ -1,8 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.*;
 import com.example.demo.model.Number;
-import com.example.demo.repository.*;
+import com.example.demo.service.number.INumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,27 +12,27 @@ import java.util.List;
 public class NumberController {
 
     @Autowired
-    NumberRepository numberRepository;
+    INumberService numberService;
 
 
     @RequestMapping("/get")
     public List<Number> getNumbers(){
-        return numberRepository.findAll();
+        return numberService.getAll();
     }
 
     @PostMapping("/insert")
     public Number insertNumber(@RequestBody Number number) {
-        return numberRepository.save(number);
+        return numberService.save(number);
     }
 
     @RequestMapping("/update")
     public Number updateNumber(@RequestBody Number number,@RequestParam("id") long id) {
         number.setId(id);
-        return numberRepository.save(number);
+        return numberService.update(number);
     }
 
     @RequestMapping("/del")
     public void delNumber(@RequestParam("id") int id){
-        numberRepository.deleteById((long)id);
+        numberService.deleteById((long)id);
     }
 }

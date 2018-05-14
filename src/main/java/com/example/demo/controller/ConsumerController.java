@@ -1,8 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.*;
-import com.example.demo.model.Number;
-import com.example.demo.repository.*;
+import com.example.demo.service.consumer.IConsumerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,27 +12,27 @@ import java.util.List;
 public class ConsumerController {
 
     @Autowired
-    ConsumerRepository consumerRepository;
+    IConsumerService consumerService;
 
     @RequestMapping("/get")
     public List<Consumer> getConsumers(){
-        return consumerRepository.findAll();
+        return consumerService.getAll();
     }
 
     @PostMapping("/insert")
     public Consumer insertConsumer(@RequestBody Consumer consumer) {
-        return consumerRepository.save(consumer);
+        return consumerService.save(consumer);
     }
 
     @RequestMapping("/update")
     public Consumer updateConsumer(@RequestBody Consumer consumer,@RequestParam("id") long id) {
         consumer.setId(id);
-        return consumerRepository.save(consumer);
+        return consumerService.update(consumer);
     }
 
     @RequestMapping("/del")
     public void delConsumer(@RequestParam("id") int id){
-        consumerRepository.deleteById((long)id);
+        consumerService.deleteById((long)id);
     }
 
 }

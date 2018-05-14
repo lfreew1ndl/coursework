@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.*;
-import com.example.demo.repository.*;
+import com.example.demo.service.street.IStreetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,27 +12,27 @@ import java.util.List;
 public class StreetController {
 
     @Autowired
-    StreetRepository streetRepository;
+    IStreetService streetService;
 
     @RequestMapping("/get")
     public List<Street> getStreets(){
-        return streetRepository.findAll();
+        return streetService.getAll();
     }
 
 
     @PostMapping("/insert")
     public Street insertStreet(@RequestBody Street street) {
-        return streetRepository.save(street);
+        return streetService.save(street);
     }
 
     @RequestMapping("/update")
     public Street updateStreet(@RequestBody Street street,@RequestParam("id") long id) {
         street.setId(id);
-        return streetRepository.save(street);
+        return streetService.update(street);
     }
 
     @RequestMapping("/del")
     public void delStreet(@RequestParam("id") int id){
-        streetRepository.deleteById((long)id);
+        streetService.deleteById((long)id);
     }
 }

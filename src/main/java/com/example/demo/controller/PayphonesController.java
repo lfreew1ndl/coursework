@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.*;
-import com.example.demo.repository.*;
+import com.example.demo.service.payphone.IPayphoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,26 +12,26 @@ import java.util.List;
 public class PayphonesController {
 
     @Autowired
-    PayphoneRepository payphoneRepository;
+    IPayphoneService payphoneService;
 
     @RequestMapping("/get")
     public List<Payphone> getPayphones(){
-        return payphoneRepository.findAll();
+        return payphoneService.getAll();
     }
 
     @PostMapping("/insert")
     public Payphone insertPayphone(@RequestBody Payphone payphone) {
-        return payphoneRepository.save(payphone);
+        return payphoneService.save(payphone);
     }
 
     @RequestMapping("/update")
     public Payphone updatePayphone(@RequestBody Payphone payphone, @RequestParam("id") long id) {
         payphone.setId(id);
-        return payphoneRepository.save(payphone);
+        return payphoneService.update(payphone);
     }
 
     @RequestMapping("/del")
     public void delPayphone(@RequestParam("id") int id){
-        payphoneRepository.deleteById((long)id);
+        payphoneService.deleteById((long)id);
     }
 }

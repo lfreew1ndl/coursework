@@ -1,8 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.*;
-import com.example.demo.model.Number;
-import com.example.demo.repository.*;
+import com.example.demo.service.phonenumber.IPhonenumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,27 +12,33 @@ import java.util.List;
 public class PhonenumberController {
 
     @Autowired
-    PhonenumberRepository phonenumberRepository;
+    IPhonenumberService phonenumberService;
 
     @RequestMapping("/get")
     public List<Phonenumber> getPhonenumbers(){
-        return phonenumberRepository.findAll();
+        return phonenumberService.getAll();
     }
 
     @PostMapping("/insert")
     public Phonenumber insertPhonenumber(@RequestBody Phonenumber street) {
-        return phonenumberRepository.save(street);
+        return phonenumberService.save(street);
     }
 
     @RequestMapping("/update")
     public Phonenumber updatePhonenumber(@RequestBody Phonenumber street,@RequestParam("id") long id) {
         street.setId(id);
-        return phonenumberRepository.save(street);
+        return phonenumberService.update(street);
     }
 
     @RequestMapping("/del")
     public void delPhonenumber(@RequestParam("id") int id){
-        phonenumberRepository.deleteById((long)id);
+        phonenumberService.deleteById((long)id);
     }
+
+    @RequestMapping("/getByStreetId")
+    public List<Phonenumber> getByStreetId(@RequestParam("id") long id){
+        return phonenumberService.getPhonenumbersByStreet_id(id);
+    }
+
 
 }
