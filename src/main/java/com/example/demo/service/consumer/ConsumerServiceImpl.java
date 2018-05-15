@@ -31,4 +31,9 @@ public class ConsumerServiceImpl implements IConsumerService {
     public List<Consumer> getAll() {
         return repository.findAll();
     }
+
+    @Override
+    public List<Consumer> getConsumersByPhonenumberStreetMtc_Id(long mtc_id) {
+        return repository.getConsumersByPhonenumberStreetMtc_Id(mtc_id);
+    }
 }

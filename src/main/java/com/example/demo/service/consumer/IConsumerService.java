@@ -12,4 +12,6 @@ public interface IConsumerService {
     void deleteById(long id);
 
     List<Consumer> getAll();
+
+    List<Consumer> getConsumersByPhonenumberStreetMtc_Id(long mtc_id);
 }

@@ -35,4 +35,9 @@ public class ConsumerController {
         consumerService.deleteById((long)id);
     }
 
+    @RequestMapping("/getConsumersByPhonenumberStreetMtc_Id")
+    public List<Consumer> getConsumersByPhonenumberStreetMtc_Id(@RequestParam("id") long id){
+        return consumerService.getConsumersByPhonenumberStreetMtc_Id(id);
+    }
+
 }
