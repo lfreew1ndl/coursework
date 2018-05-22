@@ -1,6 +1,7 @@
 var App = angular.module('App',[]);
 
 App.controller('Region',function ($http,$scope) {
+
     $http.get('/regions/get').then(function (response){
         $scope.regions=response.data;
         console.log(response);

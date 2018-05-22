@@ -2,162 +2,250 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <title>Call</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <link rel="stylesheet" href="css/index.css">
+    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/plugins/morrisjs/morris.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
           integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
 </head>
 
-<body ng-app="App">
-Call
-<div ng-controller="Call as ctrl" id="block">
-    <div class="container-fluid">
-        <div class="datagrid">
-            <table>
-                <thead>
-                <tr>
-                    <th width="40px">Ідентифікатор</th>
-                    <th>номер звідки звонили</th>
-                    <th>номер куда звонили</th>
-                    <th>місто звідки звонили</th>
-                    <th>місто куда звонили</th>
-                    <th>дата</th>
-                    <th width="65px">
-                        <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
-                                style="width: 63px" ng-click="ctrl.startInsertCall()">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="item in calls">
-                    <td scope="row">{{item.id}}</td>
-                    <td scope="row">{{item.whoCallNumber}}</td>
-                    <td scope="row">{{item.toWhomCallNumber}}</td>
-                    <td scope="row">{{item.cityWhoCall.name}}</td>
-                    <td scope="row">{{item.cityToWhomCall.name}}</td>
-                    <td scope="row">{{item.data}}</td>
-                    <td scope="row">
-                        <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
-                                ng-click="ctrl.startUpdateCall(item.id,item.whoCallNumber,item.toWhomCallNumber,item.cityWhoCall.id,item.cityToWhomCall.id,item.data)"
-                                style="width: 30px">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                        <button type="button" class="btn-danger" ng-click="ctrl.delFromCall(item.id)"
-                                style="width: 30px">
-                            <i class="far fa-trash-alt"></i>
-                        </button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+<body class="fix-header fix-sidebar card-no-border" ng-app="App">
+<div class="preloader">
+    <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+    </svg>
+</div>
+<div id="main-wrapper">
+    <header class="topbar">
+        <nav class="navbar top-navbar navbar-expand-md navbar-light">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                    <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo"/>
+                    <img src="../assets/images/logo-light-icon.png" alt="homepage" class="light-logo"/>
+                    <img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage"/>
+                </a>
+            </div>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav mr-auto mt-md-0">
+                    <li class="nav-item"><a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
+                                            href="javascript:void(0)"><i class="mdi mdi-menu"></i></a></li>
+                    <li class="nav-item m-l-10"><a
+                            class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark"
+                            href="javascript:void(0)"><i class="ti-menu"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <aside class="left-sidebar">
+        <div class="scroll-sidebar">
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <li class="nav-devider"></li>
+                    <li class="nav-small-cap">Навігація</li>
+
+                    <li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                            class="mdi mdi-table"></i><span class="hide-menu">Таблиці</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="region.html">Регіон</a></li>
+                            <li><a href="mtc.html">АТС</a></li>
+                            <li><a href="street.html">Вулиця</a></li>
+                            <li><a href="phonenumber.html">Номер користувача</a></li>
+                            <li><a href="consumer.html">Користувач</a></li>
+                            <li><a href="number.html">Номер телефона</a></li>
+                            <li><a href="city.html">Міста</a></li>
+                            <li><a href="call.html">Дзвінки</a></li>
+                            <li><a href="queue.html">Черга</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                            class="mdi mdi-table"></i><span class="hide-menu">Запити</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="table-basic.html">Запити 1</a></li>
+                            <li><a href="table-basic.html">Запити 1</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
         </div>
+    </aside>
 
-        <!--добавление Call-->
-        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="addModalLabel">Додавання запису</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        Номер звідки звонили
-                        <br>
-                        <input type="text" id="CallWhoCallNumber">
-                        <br>
-                        Номер куда звонили
-                        <br>
-                        <input type="text" id="CallToWhomCallNumber">
-                        <br>
-                        Вкажіть місто звідки звонили
-                        <br>
-                        <select id="CallCityWhoCall">
-                        </select>
-                        <br>
-                        Вкажіть місто куда звонили
-                        <br>
-                        <select id="CallCityToWhomCall">
-                        </select>
-                        <br>
-                        Вкажіть дату
-                        <br>
-                        <input type="date" name="bdaytime" id="CallData">
-                        <br>
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
-                        <button type="button" class="btn btn-primary" ng-click="ctrl.insertToCall()">Додати</button>
-                    </div>
-                </div>
+    <div class="page-wrapper">
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 style="padding-left: 20px " class="text-themecolor">Дзвінки</h3>
+            </div>
+            <div>
             </div>
         </div>
 
-        <!--обновленіє Call-->
-        <div class="modal fade" id="updateModal" tabindex="-2" role="dialog" aria-labelledby="updateModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="updateModalLabel">Обновлення запису</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
-                            <span aria-hidden="true">×</span>
-                        </button>
+
+        <div class="col-lg-12 col-sm-12 col-md-12">
+
+            <div class="card" ng-controller="Call as ctrl">
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>номер звідки звонили</th>
+                                <th>номер куда звонили</th>
+                                <th>місто звідки звонили</th>
+                                <th>місто куда звонили</th>
+                                <th>дата</th>
+                                <th class="text-right">
+                                    <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
+                                            style="width: 63px" ng-click="ctrl.startInsertCall()">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in calls">
+                                <td scope="row">{{item.id}}</td>
+                                <td scope="row">{{item.whoCallNumber}}</td>
+                                <td scope="row">{{item.toWhomCallNumber}}</td>
+                                <td scope="row">{{item.cityWhoCall.name}}</td>
+                                <td scope="row">{{item.cityToWhomCall.name}}</td>
+                                <td scope="row">{{item.data}}</td>
+                                <td scope="row" class="text-right">
+                                    <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
+                                            ng-click="ctrl.startUpdateCall(item.id,item.whoCallNumber,item.toWhomCallNumber,item.cityWhoCall.id,item.cityToWhomCall.id,item.data)"
+                                            style="width: 30px">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    <button type="button" class="btn-danger" ng-click="ctrl.delFromCall(item.id)"
+                                            style="width: 30px">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="modal-body">
-                        Ідентифікатор
-                        <div id="CallIdUPD"></div>
-                        Номер звідки звонили
-                        <br>
-                        <input type="text" id="CallWhoCallNumberUPD">
-                        <br>
-                        Номер куда звонили
-                        <br>
-                        <input type="text" id="CallToWhomCallNumberUPD">
-                        <br>
-                        Вкажіть місто звідки звонили
-                        <br>
-                        <select id="CallCityWhoCallUPD">
-                        </select>
-                        <br>
-                        Вкажіть місто куда звонили
-                        <br>
-                        <select id="CallCityToWhomCallUPD">
-                        </select>
-                        <br>
-                        Вкажіть дату
-                        <br>
-                        <input type="date" name="bdaytime" id="CallDataUPD">
-                        <br>
+
+                    <!--добавление Call-->
+                    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="addModalLabel">Додавання запису</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <h4>Номер звідки звонили</h4>
+                                    <input class="form-control" type="text" id="CallWhoCallNumber">
+                                    <br>
+                                    <h4>Номер куда звонили</h4>
+                                    <input class="form-control" type="text" id="CallToWhomCallNumber">
+                                    <br>
+                                    <h4>Вкажіть місто звідки звонили</h4>
+                                    <select class="form-control" id="CallCityWhoCall">
+                                    </select>
+                                    <br>
+                                    <h4>Вкажіть місто куда звонили</h4>
+                                    <select class="form-control" id="CallCityToWhomCall">
+                                    </select>
+                                    <br>
+                                    <h4>Вкажіть дату</h4>
+                                    <input class="form-control" type="date" name="bdaytime" id="CallData">
+                                    <br>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+                                    <button type="button" class="btn btn-primary" ng-click="ctrl.insertToCall()">Додати</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
-                        <button type="button" class="btn btn-primary" ng-click="ctrl.updateCall()">Обновити</button>
+
+                    <!--обновленіє Call-->
+                    <div class="modal fade" id="updateModal" tabindex="-2" role="dialog" aria-labelledby="updateModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="updateModalLabel">Обновлення запису</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <div style="display: none" id="CallIdUPD"></div>
+                                    <h4>Номер звідки звонили</h4>
+                                    <input class="form-control" type="text" id="CallWhoCallNumberUPD">
+                                    <br>
+                                    <h4>Номер куда звонили</h4>
+                                    <input class="form-control" type="text" id="CallToWhomCallNumberUPD">
+                                    <br>
+                                    <h4>Вкажіть місто звідки звонили</h4>
+                                    <select class="form-control" id="CallCityWhoCallUPD">
+                                    </select>
+                                    <br>
+                                    <h4>Вкажіть місто куда звонили</h4>
+                                    <select id="CallCityToWhomCallUPD">
+                                    </select>
+                                    <br>
+                                    <h4>Вкажіть дату</h4>
+                                    <input class="form-control" type="date" name="bdaytime" id="CallDataUPD">
+                                    <br>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+                                    <button type="button" class="btn btn-primary" ng-click="ctrl.updateCall()">Обновити</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 </div>
-<br>
-</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/call.js"></script>
+
+
+<script src="../assets/plugins/jquery/jquery.min.js"></script>
+<script src="../assets/plugins/bootstrap/js/popper.min.js"></script>
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="js/jquery.slimscroll.js"></script>
+<script src="js/waves.js"></script>
+<script src="js/sidebarmenu.js"></script>
+<script src="../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+<script src="js/custom.min.js"></script>
+<script src="../assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+<script src="../assets/plugins/raphael/raphael-min.js"></script>
+<script src="../assets/plugins/morrisjs/morris.min.js"></script>
+<script src="js/dashboard1.js"></script>
+
+
+</body>
 
 </html>

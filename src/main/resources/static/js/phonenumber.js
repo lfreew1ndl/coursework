@@ -4,8 +4,8 @@ App.controller('Phonenumber', function ($http, $scope) {
     var time = performance.now();
     $http.get('/phonenumbers/get').then(function (response) {
         time = performance.now() - time;
-        console.log('Время выполнения = ', time);
-        alert("--------");
+
+        console.log(response);
         $scope.phonenumbers = response.data;
     });
 
@@ -67,8 +67,6 @@ App.controller('Phonenumber', function ($http, $scope) {
         var time = performance.now()
         $http(req).then(function (resp) {
             time = performance.now() - time;
-            console.log('Время выполнения = ', time);
-            alert("--------");
             window.location.reload();
         })
     };
@@ -139,8 +137,7 @@ App.controller('Phonenumber', function ($http, $scope) {
         var time = performance.now();
         $http(req).then(function (resp) {
             time = performance.now() - time;
-            console.log('Время выполнения = ', time);
-            alert("--------");
+
             window.location.reload();
         })
     };
@@ -149,8 +146,6 @@ App.controller('Phonenumber', function ($http, $scope) {
     this.delFromPhonenumber = function del(id) {
         $http.get('/phonenumbers/del?id=' + id).then(function () {
             time = performance.now() - time;
-            console.log('Время выполнения = ', time);
-            alert("--------");
             window.location.reload();
         });
     };

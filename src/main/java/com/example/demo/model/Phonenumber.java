@@ -35,9 +35,6 @@ public class Phonenumber {
     @Column(name = "interspace")
     private boolean interspace;
 
-    @OneToOne(mappedBy = "phonenumber", cascade=CascadeType.REMOVE)
-    private Payphone payphone;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Street_id", insertable = false, updatable = false)
     private Street street;
