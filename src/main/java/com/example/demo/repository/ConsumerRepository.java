@@ -20,4 +20,25 @@ public interface ConsumerRepository extends JpaRepository<Consumer,Long> {
 
     @Query("select count(c) from Consumer c where c.age between :firstAge and :lastAge")
     int countConsumersByAgeIsBetween(@Param("firstAge") int firstAge,@Param("lastAge") int lastAge);
+
+    @Query("select c from Consumer c where c.balance < 0")
+    List<Consumer> getConsumersByBalanceLessThan0();
+
+    @Query("select count(c) from Consumer c where c.balance < 0")
+    int countConsumersByBalanceLessThan0();
+
+    @Query("select c from Consumer c where c.balance < 0 and c.phonenumber.street.mtc_id = :id")
+    List<Consumer> getConsumersByBalanceLessThan0AAndPhonenumberStreetMtc_id(@Param("id") long id);
+
+    @Query("select count(c) from Consumer c where c.balance < 0 and c.phonenumber.street.mtc_id = :id")
+    int countConsumersByBalanceLessThan0AAndPhonenumberStreetMtc_id(@Param("id") long id);
+
+    @Query("select c from Consumer c where c.balance < 0 and c.phonenumber.street.region_id = :id")
+    List<Consumer> getConsumersByBalanceLessThan0AAndPhonenumberStreetRegion_id(@Param("id") long id);
+
+    @Query("select count(c) from Consumer c where c.balance < 0 and c.phonenumber.street.region_id = :id")
+    int countConsumersByBalanceLessThan0AAndPhonenumberStreetRegion_id(@Param("id") long id);
+
+    @Query("select count(c) from Consumer c order by c.balance")
+    List<Consumer> getConsumersOrderByBalance();
 }

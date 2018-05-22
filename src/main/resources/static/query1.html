@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Region</title>
+    <title>Query</title>
     <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/plugins/morrisjs/morris.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -100,110 +100,62 @@
     </aside>
 
 
-    <div class="page-wrapper">
+    <div class="page-wrapper"  ng-controller="Query as ctrl">
         <div class="row page-titles">
-            <div class="col-md-5 align-self-center">
-                <h3 style="padding-left: 20px " class="text-themecolor">Регіон</h3>
-            </div>
-            <div>
+            <div class="col-lg-12 col-sm-12 col-md-12 align-self-center text-center">
+                <!--<h3 style="padding-left: 20px " class="text-themecolor">Дзвінки</h3>-->
+                <label class="form-control-label">
+                    <h3>
+                        Одержати перелік абонентів вказаної АТС.
+                    </h3>
+                </label>
+                <br>
+                <h3>Вкажіть АТС</h3>
+                <select class="form-control" id="MTCName">
+                </select>
+                <br>
+                <br>
+                <button type="button" class="btn-success"
+                        style="width: 63px" ng-click="ctrl.getFromDB()">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
         </div>
 
 
         <div class="col-lg-12 col-sm-12 col-md-12">
 
-            <div class="card" ng-controller="Region as ctrl">
+            <div class="card">
                 <div class="card-body">
-
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Назва</th>
-                                <th class="text-right">
-                                    <button type="button" class="btn-success" data-toggle="modal"
-                                            data-target="#addModal"
-                                            style="width: 63px">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
-                                </th>
+                                <th>ім'я</th>
+                                <th>фімілія</th>
+                                <th>стать</th>
+                                <th>вік</th>
+                                <th>баланс</th>
+                                <th>пільговик</th>
+                                <th>номер телефона</th>
+                                <th>підключений</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="item in regions">
+                            <tr ng-repeat="item in items">
                                 <td scope="row">{{item.id}}</td>
-                                <td scope="row">{{item.name}}</td>
-                                <td class="text-right">
-                                    <button type="button" class="btn-warning" data-toggle="modal"
-                                            data-target="#updateModal"
-                                            ng-click="ctrl.startUpdateRegion(item.id,item.name)"
-                                            style="width: 30px">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </button>
-                                    <button type="button" class="btn-danger" ng-click="ctrl.delFromRegion(item.id)"
-                                            style="width: 30px">
-                                        <i class="far fa-trash-alt"></i>
-                                    </button>
-                                </td>
+                                <td scope="row">{{item.firstName}}</td>
+                                <td scope="row">{{item.lastName}}</td>
+                                <td scope="row">{{item.sex}}</td>
+                                <td scope="row">{{item.age}}</td>
+                                <td scope="row">{{item.balance}}</td>
+                                <td scope="row">{{item.beneficiary?'Так':'Ні'}}</td>
+                                <td scope="row">{{item.phonenumber.number.number}}</td>
+                                <td scope="row">{{item.connected?'Так':'Ні'}}</td>
                             </tr>
-
                             </tbody>
                         </table>
-                    </div>
-
-                    <!--добавление Region-->
-                    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="addModalLabel">Додавання запису</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body text-center">
-                                    <h4>Введіть назву регіона</h4>
-                                    <input class="form-control" type="text" id="RegionName">
-                                    <br>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
-                                    <button type="button" class="btn btn-primary" ng-click="ctrl.insertToRegion()">
-                                        Додати
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--обновленіє Region-->
-                    <div class="modal fade" id="updateModal" tabindex="-2" role="dialog"
-                         aria-labelledby="updateModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="updateModalLabel">Обновлення запису</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body text-center">
-                                    <div style="display: none" id="RegionIdUPD"></div>
-                                    <h4>Введіть назву регіона</h4>
-                                    <input class="form-control" type="text" id="RegionNameUPD">
-                                    <br>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
-                                    <button type="button" class="btn btn-primary" ng-click="ctrl.updateRegion()">
-                                        Обновити
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -217,7 +169,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 
-<script type="text/javascript" src="js/region.js"></script>
+<script type="text/javascript" src="js/query1.js"></script>
 
 
 <script src="../assets/plugins/jquery/jquery.min.js"></script>
