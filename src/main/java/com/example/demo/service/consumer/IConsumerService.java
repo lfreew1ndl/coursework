@@ -14,4 +14,26 @@ public interface IConsumerService {
     List<Consumer> getAll();
 
     List<Consumer> getConsumersByPhonenumberStreetMtc_Id(long mtc_id);
+
+    int countConsumersByPhonenumberStreetMtc_Id( long mtc_id);
+
+    int countConsumersByBeneficiaryIsTrue();
+
+    int countConsumersByAgeIsBetween( long firstAge, long lastAge);
+
+    List<Consumer> getConsumersByBalanceLessThan0();
+
+    int countConsumersByBalanceLessThan0();
+
+    List<Consumer> getConsumersByBalanceLessThan0AAndPhonenumberStreetMtc_id(long id);
+
+    int countConsumersByBalanceLessThan0AAndPhonenumberStreetMtc_id(long id);
+
+    List<Consumer> getConsumersByBalanceLessThan0AAndPhonenumberStreetRegion_id(long id);
+
+    int countConsumersByBalanceLessThan0AAndPhonenumberStreetRegion_id(long id);
+
+    List<Consumer> getConsumersByBalanceLessThan0OrderByBalance();
+
+    int countConsumers();
 }

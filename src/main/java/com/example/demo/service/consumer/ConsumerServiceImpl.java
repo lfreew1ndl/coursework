@@ -36,4 +36,59 @@ public class ConsumerServiceImpl implements IConsumerService {
     public List<Consumer> getConsumersByPhonenumberStreetMtc_Id(long mtc_id) {
         return repository.getConsumersByPhonenumberStreetMtc_Id(mtc_id);
     }
+
+    @Override
+    public int countConsumersByPhonenumberStreetMtc_Id(long mtc_id) {
+        return repository.countConsumersByPhonenumberStreetMtc_Id(mtc_id);
+    }
+
+    @Override
+    public int countConsumersByBeneficiaryIsTrue() {
+        return repository.countConsumersByBeneficiaryIsTrue();
+    }
+
+    @Override
+    public int countConsumersByAgeIsBetween(long firstAge, long lastAge) {
+        return repository.countConsumersByAgeIsBetween(firstAge,lastAge);
+    }
+
+    @Override
+    public List<Consumer> getConsumersByBalanceLessThan0() {
+        return repository.getConsumersByBalanceLessThan0();
+    }
+
+    @Override
+    public int countConsumersByBalanceLessThan0() {
+        return repository.countConsumersByBalanceLessThan0();
+    }
+
+    @Override
+    public List<Consumer> getConsumersByBalanceLessThan0AAndPhonenumberStreetMtc_id(long id) {
+        return repository.getConsumersByBalanceLessThan0AAndPhonenumberStreetMtc_id(id);
+    }
+
+    @Override
+    public int countConsumersByBalanceLessThan0AAndPhonenumberStreetMtc_id(long id) {
+        return repository.countConsumersByBalanceLessThan0AAndPhonenumberStreetMtc_id(id);
+    }
+
+    @Override
+    public List<Consumer> getConsumersByBalanceLessThan0AAndPhonenumberStreetRegion_id(long id) {
+        return repository.getConsumersByBalanceLessThan0AAndPhonenumberStreetRegion_id(id);
+    }
+
+    @Override
+    public int countConsumersByBalanceLessThan0AAndPhonenumberStreetRegion_id(long id) {
+        return repository.countConsumersByBalanceLessThan0AAndPhonenumberStreetRegion_id(id);
+    }
+
+    @Override
+    public List<Consumer> getConsumersByBalanceLessThan0OrderByBalance() {
+        return repository.getConsumersByBalanceLessThan0OrderByBalance();
+    }
+
+    @Override
+    public int countConsumers() {
+        return repository.countConsumers();
+    }
 }

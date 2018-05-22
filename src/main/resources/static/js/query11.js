@@ -16,9 +16,9 @@ App.controller('Query', function ($http, $scope) {
     this.getFromDB = function getFromDB() {
         var index = document.getElementById("MTCName").selectedIndex;
         var selectedMTC = document.getElementById("MTCName").options[index].value;
-        $http.get('/consumers/getConsumersByPhonenumberStreetMtc_Id?id=' + selectedMTC).then(function (response) {
+        $http.get('/consumers/countConsumersByBalanceLessThan0AAndPhonenumberStreetMtc_id?id=' + selectedMTC).then(function (response) {
             console.log(response);
-            $scope.items = response.data;
+            document.getElementById("data").innerText = "Результат пошуку:      " +response.data;
         });
     };
 });

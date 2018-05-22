@@ -106,13 +106,9 @@
                 <!--<h3 style="padding-left: 20px " class="text-themecolor">Дзвінки</h3>-->
                 <label class="form-control-label">
                     <h3>
-                        Одержати перелік абонентів для вказаної АТС.
+                        Одержати кількість боржників загалом.
                     </h3>
                 </label>
-                <br>
-                <h3>Вкажіть АТС</h3>
-                <select class="form-control" id="MTCName">
-                </select>
                 <br>
                 <br>
                 <button type="button" class="btn-success"
@@ -127,36 +123,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>ім'я</th>
-                                <th>фімілія</th>
-                                <th>стать</th>
-                                <th>вік</th>
-                                <th>баланс</th>
-                                <th>пільговик</th>
-                                <th>номер телефона</th>
-                                <th>підключений</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr ng-repeat="item in items">
-                                <td scope="row">{{item.id}}</td>
-                                <td scope="row">{{item.firstName}}</td>
-                                <td scope="row">{{item.lastName}}</td>
-                                <td scope="row">{{item.sex}}</td>
-                                <td scope="row">{{item.age}}</td>
-                                <td scope="row">{{item.balance}}</td>
-                                <td scope="row">{{item.beneficiary?'Так':'Ні'}}</td>
-                                <td scope="row">{{item.phonenumber.number.number}}</td>
-                                <td scope="row">{{item.connected?'Так':'Ні'}}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <h4 class="form-control-label" id="data">Результат пошуку: </h4>
                 </div>
             </div>
         </div>
@@ -169,7 +136,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 
-<script type="text/javascript" src="js/query1.js"></script>
+<script type="text/javascript" src="js/query10.js"></script>
 
 
 <script src="../assets/plugins/jquery/jquery.min.js"></script>
