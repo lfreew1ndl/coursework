@@ -12,4 +12,8 @@ public interface INumberService {
     void deleteById(long id);
 
     List<Number> getAll();
+
+    List<Number> getNumbersByPhonenumberIsNull();
+
+    int countNumbersByPhonenumberIsNullAAnd();
 }

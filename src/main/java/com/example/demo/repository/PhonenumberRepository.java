@@ -11,4 +11,7 @@ public interface PhonenumberRepository extends JpaRepository<Phonenumber,Long> {
 
     @Query("select p from Phonenumber p where p.street_id = :street_id")
     List<Phonenumber> getPhonenumbersByStreet_id(@Param("street_id")long street_id);
+
+    @Query("select count(p) from Phonenumber p  where p.phoneType = 'Таксофон'")
+    int countPhonenumbersByPhoneTypeIsPayPhone();
 }

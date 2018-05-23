@@ -1,5 +1,6 @@
 package com.example.demo.service.mtc;
 
+import com.example.demo.model.ATCType;
 import com.example.demo.model.Mtc;
 import com.example.demo.model.Region;
 
@@ -14,4 +15,6 @@ public interface IMtcService {
     void deleteById(long id);
 
     List<Mtc> getAll();
+
+    List<Mtc> getMtcsByAtcType(ATCType type);
 }

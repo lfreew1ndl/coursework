@@ -1,6 +1,8 @@
 package com.example.demo.repository;
 
+import com.example.demo.model.ATCType;
 import com.example.demo.model.Consumer;
+import com.example.demo.model.PhoneType;
 import com.example.demo.model.Region;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -44,4 +46,18 @@ public interface ConsumerRepository extends JpaRepository<Consumer,Long> {
 
     @Query("select c from Consumer c where c.balance < 0 order by c.balance")
     List<Consumer> getConsumersByBalanceLessThan0OrderByBalance();
+
+    @Query("select c from Consumer c where c.phonenumber.street.mtc.atcType = :type")
+    List<Consumer> getConsumersByPhonenumberStreetMtcAtcType(@Param("type") ATCType type);
+
+    @Query("select c from Consumer c where c.phonenumber.phoneType = 'Паралельний'")
+    List<Consumer> getConsumersByPhonenumberPhoneType();
+
+    @Query("select c from Consumer c where c.phonenumber.phoneType = 'Паралельний' and c.beneficiary = true")
+    List<Consumer> getConsumersByPhonenumberPhoneTypeAndBeneficiaryIsTrue();
+
+    @Query("select c from Consumer c where c.phonenumber.number.number = :number")
+    List<Consumer> getConsumerByPhonenumberNumber(@Param("number") long number);
+
+
 }

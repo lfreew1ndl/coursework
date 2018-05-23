@@ -19,6 +19,10 @@ public class Number {
     @Column(name = "number")
     private long number;
 
+    @JsonIgnore
+    @OneToOne(mappedBy = "number")
+    private Phonenumber phonenumber;
+
 
     public Number(long number) {
         this.number = number;

@@ -35,4 +35,14 @@ public class NumberController {
     public void delNumber(@RequestParam("id") int id){
         numberService.deleteById((long)id);
     }
+
+    @RequestMapping("/getNumbersByPhonenumberIsNull")
+    public List<Number> getNumbersByPhonenumberIsNull(){
+        return numberService.getNumbersByPhonenumberIsNull();
+    }
+
+    @RequestMapping("/countNumbersByPhonenumberIsNullAAnd")
+    public int countNumbersByPhonenumberIsNullAAnd(){
+        return numberService.countNumbersByPhonenumberIsNullAAnd();
+    }
 }

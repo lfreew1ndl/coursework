@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Query</title>
+    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/plugins/morrisjs/morris.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+</head>
+
+<body class="fix-header fix-sidebar card-no-border" ng-app="App">
+<div class="preloader">
+    <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+    </svg>
+</div>
+<div id="main-wrapper">
+    <header class="topbar">
+        <nav class="navbar top-navbar navbar-expand-md navbar-light">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                    <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo"/>
+                    <img src="../assets/images/logo-light-icon.png" alt="homepage" class="light-logo"/>
+                    <img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage"/>
+                </a>
+            </div>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav mr-auto mt-md-0">
+                    <li class="nav-item"><a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
+                                            href="javascript:void(0)"><i class="mdi mdi-menu"></i></a></li>
+                    <li class="nav-item m-l-10"><a
+                            class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark"
+                            href="javascript:void(0)"><i class="ti-menu"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <aside class="left-sidebar">
+        <div class="scroll-sidebar">
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <li class="nav-devider"></li>
+                    <li class="nav-small-cap">Навігація</li>
+
+                    <li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                            class="mdi mdi-table"></i><span class="hide-menu">Таблиці</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="region.html">Регіон</a></li>
+                            <li><a href="mtc.html">АТС</a></li>
+                            <li><a href="street.html">Вулиця</a></li>
+                            <li><a href="phonenumber.html">Номер користувача</a></li>
+                            <li><a href="consumer.html">Користувач</a></li>
+                            <li><a href="number.html">Номер телефона</a></li>
+                            <li><a href="city.html">Міста</a></li>
+                            <li><a href="call.html">Дзвінки</a></li>
+                            <li><a href="queue.html">Черга</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                            class="mdi mdi-table"></i><span class="hide-menu">Запити</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="query1.html">Запит 1</a></li>
+                            <li><a href="query2.html">Запит 2</a></li>
+                            <li><a href="query3.html">Запит 3</a></li>
+                            <li><a href="query4.html">Запит 4</a></li>
+                            <li><a href="query5.html">Запит 5</a></li>
+                            <li><a href="query6.html">Запит 6</a></li>
+                            <li><a href="query7.html">Запит 7</a></li>
+                            <li><a href="query8.html">Запит 8</a></li>
+                            <li><a href="query9.html">Запит 9</a></li>
+                            <li><a href="query10.html">Запит 10</a></li>
+                            <li><a href="query11.html">Запит 11</a></li>
+                            <li><a href="query12.html">Запит 12</a></li>
+                            <li><a href="query13.html">Запит 13</a></li>
+                            <li><a href="query14.html">Запит 14</a></li>
+                            <li><a href="query15.html">Запит 15</a></li>
+                            <li><a href="query16.html">Запит 16</a></li>
+                            <li><a href="query17.html">Запит 17</a></li>
+                            <li><a href="query18.html">Запит 18</a></li>
+                            <li><a href="query19.html">Запит 19</a></li>
+                            <li><a href="query20.html">Запит 20</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </aside>
+
+
+    <div class="page-wrapper"  ng-controller="Query as ctrl">
+        <div class="row page-titles">
+            <div class="col-lg-12 col-sm-12 col-md-12 align-self-center text-center">
+                <!--<h3 style="padding-left: 20px " class="text-themecolor">Дзвінки</h3>-->
+                <label class="form-control-label">
+                    <h3>
+                        Одержати перелік користувачів з паралельним типом телефона.
+                    </h3>
+                </label>
+                <br>
+                <br>
+                <button type="button" class="btn-success"
+                        style="width: 63px" ng-click="ctrl.getFromDB()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+
+
+        <div class="col-lg-12 col-sm-12 col-md-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>ім'я</th>
+                                <th>фімілія</th>
+                                <th>стать</th>
+                                <th>вік</th>
+                                <th>баланс</th>
+                                <th>пільговик</th>
+                                <th>номер телефона</th>
+                                <th>підключений</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in items">
+                                <td scope="row">{{item.id}}</td>
+                                <td scope="row">{{item.firstName}}</td>
+                                <td scope="row">{{item.lastName}}</td>
+                                <td scope="row">{{item.sex}}</td>
+                                <td scope="row">{{item.age}}</td>
+                                <td scope="row">{{item.balance}}</td>
+                                <td scope="row">{{item.beneficiary?'Так':'Ні'}}</td>
+                                <td scope="row">{{item.phonenumber.number.number}}</td>
+                                <td scope="row">{{item.connected?'Так':'Ні'}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript" src="js/query15.js"></script>
+
+
+<script src="../assets/plugins/jquery/jquery.min.js"></script>
+<script src="../assets/plugins/bootstrap/js/popper.min.js"></script>
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="js/jquery.slimscroll.js"></script>
+<script src="js/waves.js"></script>
+<script src="js/sidebarmenu.js"></script>
+<script src="../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+<script src="js/custom.min.js"></script>
+<script src="../assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+<script src="../assets/plugins/raphael/raphael-min.js"></script>
+<script src="../assets/plugins/morrisjs/morris.min.js"></script>
+<script src="js/dashboard1.js"></script>
+
+
+</body>
+
+</html>

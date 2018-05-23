@@ -36,4 +36,9 @@ public class PhonenumberServiceImpl implements IPhonenumberService{
     public List<Phonenumber> getPhonenumbersByStreet_id(long street_id) {
         return repository.getPhonenumbersByStreet_id(street_id);
     }
+
+    @Override
+    public int countPhonenumbersByPhoneTypeIsPayPhone() {
+        return repository.countPhonenumbersByPhoneTypeIsPayPhone();
+    }
 }

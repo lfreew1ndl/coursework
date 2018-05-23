@@ -1,5 +1,6 @@
 package com.example.demo.service.consumer;
 
+import com.example.demo.model.ATCType;
 import com.example.demo.repository.ConsumerRepository;
 import com.example.demo.model.Consumer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,5 +91,25 @@ public class ConsumerServiceImpl implements IConsumerService {
     @Override
     public int countConsumers() {
         return repository.countConsumers();
+    }
+
+    @Override
+    public List<Consumer> getConsumersByPhonenumberStreetMtcAtcType(ATCType type) {
+        return repository.getConsumersByPhonenumberStreetMtcAtcType(type);
+    }
+
+    @Override
+    public List<Consumer> getConsumersByPhonenumberPhoneType() {
+        return repository.getConsumersByPhonenumberPhoneType();
+    }
+
+    @Override
+    public List<Consumer> getConsumersByPhonenumberPhoneTypeAndBeneficiaryIsTrue() {
+        return repository.getConsumersByPhonenumberPhoneTypeAndBeneficiaryIsTrue();
+    }
+
+    @Override
+    public List<Consumer> getConsumerByPhonenumberNumber(long number) {
+        return repository.getConsumerByPhonenumberNumber(number);
     }
 }

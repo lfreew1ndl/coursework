@@ -21,6 +21,7 @@ public class PhonenumberController {
 
     @PostMapping("/insert")
     public Phonenumber insertPhonenumber(@RequestBody Phonenumber street) {
+        System.out.println(street.getPhoneType());
         return phonenumberService.save(street);
     }
 
@@ -40,5 +41,9 @@ public class PhonenumberController {
         return phonenumberService.getPhonenumbersByStreet_id(id);
     }
 
+    @RequestMapping("/countPhonenumbersByPhoneTypeIsPayPhone")
+    public int countPhonenumbersByPhoneTypeIsPayPhone(){
+        return phonenumberService.countPhonenumbersByPhoneTypeIsPayPhone();
+    }
 
 }

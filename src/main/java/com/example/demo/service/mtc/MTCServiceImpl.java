@@ -1,5 +1,6 @@
 package com.example.demo.service.mtc;
 
+import com.example.demo.model.ATCType;
 import com.example.demo.repository.MTCRepository;
 import com.example.demo.model.Mtc;
 import com.example.demo.model.Region;
@@ -32,5 +33,10 @@ public class MTCServiceImpl implements IMtcService {
     @Override
     public List<Mtc> getAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public List<Mtc> getMtcsByAtcType(ATCType type) {
+        return repository.getMtcsByAtcType(type);
     }
 }

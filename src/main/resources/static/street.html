@@ -125,7 +125,7 @@
                                 <th>індекс</th>
                                 <th>кількість каналів</th>
                                 <th>атс</th>
-                                <th class="text-left">
+                                <th class="text-right">
                                     <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
                                             style="width: 63px" ng-click="ctrl.startInsertStreet()">
                                         <i class="fas fa-plus"></i>
@@ -141,7 +141,7 @@
                                 <td scope="row">{{item.index}}</td>
                                 <td scope="row">{{item.channels}}</td>
                                 <td scope="row">{{item.mtc.name}}</td>
-                                <td scope="row" class="text-left">
+                                <td scope="row" class="text-right">
                                     <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
                                             ng-click="ctrl.startUpdateStreet(item.id,item.name,item.region.id,item.index,item.channels,item.mtc.id)"
                                             style="width: 30px">

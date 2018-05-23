@@ -1,5 +1,6 @@
 package com.example.demo.service.consumer;
 
+import com.example.demo.model.ATCType;
 import com.example.demo.model.Consumer;
 
 import java.util.List;
@@ -36,4 +37,12 @@ public interface IConsumerService {
     List<Consumer> getConsumersByBalanceLessThan0OrderByBalance();
 
     int countConsumers();
+
+    List<Consumer> getConsumersByPhonenumberStreetMtcAtcType(ATCType type);
+
+    List<Consumer> getConsumersByPhonenumberPhoneType();
+
+    List<Consumer> getConsumersByPhonenumberPhoneTypeAndBeneficiaryIsTrue();
+
+    List<Consumer> getConsumerByPhonenumberNumber( long number);
 }

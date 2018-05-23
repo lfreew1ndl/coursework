@@ -31,4 +31,14 @@ public class NumberServiceImpl implements INumberService {
     public List<Number> getAll() {
         return repository.findAll();
     }
+
+    @Override
+    public List<Number> getNumbersByPhonenumberIsNull() {
+        return repository.getNumbersByPhonenumberIsNull();
+    }
+
+    @Override
+    public int countNumbersByPhonenumberIsNullAAnd() {
+        return repository.countNumbersByPhonenumberIsNullAAnd();
+    }
 }

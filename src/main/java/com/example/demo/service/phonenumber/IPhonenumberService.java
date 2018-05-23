@@ -16,4 +16,6 @@ public interface IPhonenumberService {
     List<Phonenumber> getAll();
 
     List<Phonenumber> getPhonenumbersByStreet_id(long street_id);
+
+    int countPhonenumbersByPhoneTypeIsPayPhone();
 }

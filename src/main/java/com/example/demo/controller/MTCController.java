@@ -36,4 +36,9 @@ public class MTCController {
         mtcService.deleteById((long)id);
     }
 
+    @RequestMapping("/getMtcsByAtcType")
+    List<Mtc> getMtcsByAtcType(@RequestParam("atcType") ATCType atcType){
+        return mtcService.getMtcsByAtcType(atcType);
+    };
+
 }
