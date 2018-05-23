@@ -22,7 +22,7 @@ App.controller('Phonenumber', function ($http, $scope) {
                 selector.add(option);
             }
         });
-        $http.get('/numbers/get').then(function (response) {
+        $http.get('/numbers/getNumbersByPhonenumberIsNull').then(function (response) {
             var numbers = response.data;
             var selector = document.getElementById("PhonenumberNumber");
             $(selector).empty();
