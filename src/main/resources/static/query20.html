@@ -106,9 +106,16 @@
                 <!--<h3 style="padding-left: 20px " class="text-themecolor">Дзвінки</h3>-->
                 <label class="form-control-label">
                     <h3>
-                        Вивести вільні телефоні номери.
+                        Одержати повну інформацію про користувача за номером телефону.
                     </h3>
                 </label>
+                <br>
+                <h3>Вкажіть тип АТС</h3>
+                <select class="form-control" id="ATCType">
+                    <option>Міський</option>
+                    <option>Відомчий</option>
+                    <option>Установчий</option>
+                </select>
                 <br>
                 <br>
                 <button type="button" class="btn-success"
@@ -127,14 +134,16 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th >ID</th>
+                                <th>ID</th>
+                                <th>Тип АТС</th>
                                 <th>Назва</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="item in items">
                                 <td scope="row">{{item.id}}</td>
-                                <td scope="row">{{item.number}}</td>
+                                <td scope="row">{{item.atcType}}</td>
+                                <td scope="row">{{item.name}}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -151,7 +160,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 
-<script type="text/javascript" src="js/query13.js"></script>
+<script type="text/javascript" src="js/query20.js"></script>
 
 
 <script src="../assets/plugins/jquery/jquery.min.js"></script>
